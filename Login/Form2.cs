@@ -16,34 +16,40 @@ namespace BarmanStoreProject.ScannerDemo
     {
         #region 1 Declaration of Controls
         private System.Windows.Forms.GroupBox groupBox1;
+        
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        
         private System.Windows.Forms.ListBox listBox1;
+       
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
-        
-        private System.Windows.Forms.TextBox textBox2;
-       
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textColorMode;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textResolution;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textContrast;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBrightness;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textHeight;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textColorMode;
+        private System.Windows.Forms.TextBox textResolution;
+        private System.Windows.Forms.TextBox textContrast;
+        private System.Windows.Forms.TextBox textBrightness;
+        private System.Windows.Forms.TextBox textHeight;
         private System.Windows.Forms.TextBox textWidth;
-        private System.Windows.Forms.Button button3;
+
+        private System.Windows.Forms.Button scanButton;
+        private System.Windows.Forms.Button selectFolderButton;
+        private System.Windows.Forms.Button saveButton;
+
+        private System.Windows.Forms.PictureBox pictureBox1;
+           
+        private System.Windows.Forms.ComboBox comboBox1;
+                
         #endregion
         public Form2()
         {
@@ -51,7 +57,7 @@ namespace BarmanStoreProject.ScannerDemo
             #region 2 Assignment of Controls
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.scanButton = new System.Windows.Forms.Button();
             this.textColorMode = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textResolution = new System.Windows.Forms.TextBox();
@@ -70,12 +76,12 @@ namespace BarmanStoreProject.ScannerDemo
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.selectFolderButton = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -86,9 +92,9 @@ namespace BarmanStoreProject.ScannerDemo
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.saveButton);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.scanButton);
             this.groupBox1.Controls.Add(this.textColorMode);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.textResolution);
@@ -107,7 +113,7 @@ namespace BarmanStoreProject.ScannerDemo
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.selectFolderButton);
             this.groupBox1.Controls.Add(this.listBox1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
@@ -126,15 +132,15 @@ namespace BarmanStoreProject.ScannerDemo
             this.label10.TabIndex = 21;
             this.label10.Text = "Color mode";
             // 
-            // button1
+            // scanButton
             // 
-            this.button1.Location = new System.Drawing.Point(89, 663);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(86, 35);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Start scan";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.scanButton.Location = new System.Drawing.Point(89, 663);
+            this.scanButton.Name = "button1";
+            this.scanButton.Size = new System.Drawing.Size(86, 35);
+            this.scanButton.TabIndex = 0;
+            this.scanButton.Text = "Start scan";
+            this.scanButton.UseVisualStyleBackColor = true;
+            this.scanButton.Click += new System.EventHandler(this.scanButton_Click);
             // 
             // textColorMode
             // 
@@ -302,15 +308,15 @@ namespace BarmanStoreProject.ScannerDemo
             this.textBox1.Size = new System.Drawing.Size(194, 20);
             this.textBox1.TabIndex = 2;
             // 
-            // button2
+            // selectFolderButton
             // 
-            this.button2.Location = new System.Drawing.Point(56, 368);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 38);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Change output folder";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.selectFolderButton.Location = new System.Drawing.Point(56, 368);
+            this.selectFolderButton.Name = "button2";
+            this.selectFolderButton.Size = new System.Drawing.Size(84, 38);
+            this.selectFolderButton.TabIndex = 1;
+            this.selectFolderButton.Text = "Change output folder";
+            this.selectFolderButton.UseVisualStyleBackColor = true;
+            this.selectFolderButton.Click += new System.EventHandler(this.selectFolderButton_Click);
             // 
             // listBox1
             // 
@@ -359,15 +365,15 @@ namespace BarmanStoreProject.ScannerDemo
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // button3
+            // saveButton
             // 
-            this.button3.Location = new System.Drawing.Point(171, 368);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 38);
-            this.button3.TabIndex = 22;
-            this.button3.Text = "Save File";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.saveButton.Location = new System.Drawing.Point(171, 368);
+            this.saveButton.Name = "button3";
+            this.saveButton.Size = new System.Drawing.Size(75, 38);
+            this.saveButton.TabIndex = 22;
+            this.saveButton.Text = "Save File";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // Form1
             // 
@@ -428,8 +434,8 @@ namespace BarmanStoreProject.ScannerDemo
                 );
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        #region Scan Function
+        private void scanButton_Click(object sender, EventArgs e)
         {
             Task.Factory.StartNew(StartScanning).ContinueWith(result => TriggerScan());
 
@@ -508,8 +514,8 @@ namespace BarmanStoreProject.ScannerDemo
             var img = System.Drawing.Image.FromStream(ms);
             pictureBox1.Image = img;
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        #endregion
+        private void selectFolderButton_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderDlg = new FolderBrowserDialog();
             folderDlg.ShowNewFolderButton = true;
@@ -520,8 +526,8 @@ namespace BarmanStoreProject.ScannerDemo
                 textBox1.Text = folderDlg.SelectedPath;
             }
         }
-
-        private void button3_Click(object sender, EventArgs e)
+        #region Save Button Function
+        private void saveButton_Click(object sender, EventArgs e)
         {
             Task.Factory.StartNew(StartSaving).ContinueWith(result => TriggerSave());
 
@@ -545,7 +551,7 @@ namespace BarmanStoreProject.ScannerDemo
         {
             MessageBox.Show("File Saved");
         }
-
+        #endregion
         private void textResolution_Validating(object sender, CancelEventArgs e)
         {
             int v = 300;
