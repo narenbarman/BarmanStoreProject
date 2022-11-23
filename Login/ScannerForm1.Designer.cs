@@ -1,6 +1,6 @@
 ﻿namespace BarmanStoreProject.ScannerDemo
 {
-    partial class Form2
+    partial class ScannerForm1
     {
         /// <summary>
         /// Required designer variable.
@@ -344,13 +344,13 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // Form2
+            // ScannerForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1110, 510);
             this.Controls.Add(this.propertiesPanel);
-            this.Name = "Form2";
+            this.Name = "ScannerForm1";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.propertiesGroupBox.ResumeLayout(false);

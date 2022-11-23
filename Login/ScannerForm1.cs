@@ -7,7 +7,7 @@ using WIA;
 
 namespace BarmanStoreProject.ScannerDemo
 {
-    public partial class Form2 : Form
+    public partial class ScannerForm1 : Form
     {
         #region 1 Declaration of Controls
         
@@ -15,15 +15,16 @@ namespace BarmanStoreProject.ScannerDemo
        
                 
         #endregion
-        public Form2()
+        public ScannerForm1()
         {
             InitializeComponent();
+            image = null;
         }
         
             
         private string imageExtension = "";
         private ImageFile image = new ImageFile();
-       
+        
 
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -157,12 +158,13 @@ namespace BarmanStoreProject.ScannerDemo
         #region Save Button Function
         private void saveButton_Click(object sender, EventArgs e)
         {
-            Task.Factory.StartNew(StartSaving).ContinueWith(result => TriggerSave());
+            if (image != null) Task.Factory.StartNew(StartSaving).ContinueWith(result => TriggerSave());
+            else MessageBox.Show("Nothing to save");
         }
 
         private bool StartSaving()
         {
-            var path = textFolder.Text + textFileName.Text + imageExtension;
+            var path = textFolder.Text + "\\" + textFileName.Text + imageExtension;
             try
             {
                 if (File.Exists(path))
@@ -271,7 +273,17 @@ namespace BarmanStoreProject.ScannerDemo
             }
         }
 
-       
+        public System.Drawing.Image ReturnImage()
+        {
+            System.Drawing.Image img = null;
+            if (image != null)
+            {
+                var imageBytes = (byte[])image.FileData.get_BinaryData();
+                var ms = new MemoryStream(imageBytes);
+                 img = System.Drawing.Image.FromStream(ms);
+            }
+            return img;
+        }
     }
     
 }
