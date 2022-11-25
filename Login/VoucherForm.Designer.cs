@@ -39,7 +39,7 @@
             this.vouchergridPanel = new System.Windows.Forms.TableLayoutPanel();
             this.voucherBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.voucherBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.voucher1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bARMANSTOREDATABASEDataSet = new BarmanStoreProject.BARMANSTOREDATABASEDataSet();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
@@ -53,18 +53,21 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.voucherBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.voucherDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.voucheridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.partynameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vouchernoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.voucherdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.voucheramountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amountpandingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imageDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.vouchertypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.addPartyNameButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.modifyButton = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             this.amount_pandingTextBox = new System.Windows.Forms.TextBox();
             this.voucher_amountTextBox = new System.Windows.Forms.TextBox();
             this.voucher_dateDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -81,15 +84,14 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.voucherTableAdapter = new BarmanStoreProject.BARMANSTOREDATABASEDataSetTableAdapters.voucherTableAdapter();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.paymentButton = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.tableAdapterManager = new BarmanStoreProject.BARMANSTOREDATABASEDataSetTableAdapters.TableAdapterManager();
             this.transactionTableAdapter = new BarmanStoreProject.BARMANSTOREDATABASEDataSetTableAdapters.transactionTableAdapter();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.voucher1TableAdapter = new BarmanStoreProject.BARMANSTOREDATABASEDataSetTableAdapters.voucher1TableAdapter();
             voucher_typeLabel = new System.Windows.Forms.Label();
             party_nameLabel = new System.Windows.Forms.Label();
             voucher_noLabel = new System.Windows.Forms.Label();
@@ -99,7 +101,7 @@
             this.vouchergridPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.voucherBindingNavigator)).BeginInit();
             this.voucherBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.voucherBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.voucher1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bARMANSTOREDATABASEDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.voucherDataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -180,13 +182,14 @@
             this.vouchergridPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.vouchergridPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.vouchergridPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.vouchergridPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.vouchergridPanel.Size = new System.Drawing.Size(519, 519);
             this.vouchergridPanel.TabIndex = 0;
             // 
             // voucherBindingNavigator
             // 
             this.voucherBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.voucherBindingNavigator.BindingSource = this.voucherBindingSource;
+            this.voucherBindingNavigator.BindingSource = this.voucher1BindingSource;
             this.voucherBindingNavigator.CountItem = this.bindingNavigatorCountItem;
             this.voucherBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
             this.voucherBindingNavigator.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -223,10 +226,10 @@
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 17);
             this.bindingNavigatorAddNewItem.Text = "Add new";
             // 
-            // voucherBindingSource
+            // voucher1BindingSource
             // 
-            this.voucherBindingSource.DataMember = "voucher";
-            this.voucherBindingSource.DataSource = this.bARMANSTOREDATABASEDataSet;
+            this.voucher1BindingSource.DataMember = "voucher1";
+            this.voucher1BindingSource.DataSource = this.bARMANSTOREDATABASEDataSet;
             // 
             // bARMANSTOREDATABASEDataSet
             // 
@@ -317,7 +320,7 @@
             this.voucherBindingNavigatorSaveItem.Name = "voucherBindingNavigatorSaveItem";
             this.voucherBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 17);
             this.voucherBindingNavigatorSaveItem.Text = "Save Data";
-            this.voucherBindingNavigatorSaveItem.Click += new System.EventHandler(this.voucherBindingNavigatorSaveItem_Click_4);
+            this.voucherBindingNavigatorSaveItem.Click += new System.EventHandler(this.voucherBindingNavigatorSaveItem_Click);
             // 
             // voucherDataGridView
             // 
@@ -325,13 +328,15 @@
             this.voucherDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.voucherDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.voucherDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn2});
-            this.voucherDataGridView.DataSource = this.voucherBindingSource;
+            this.voucheridDataGridViewTextBoxColumn,
+            this.partynameDataGridViewTextBoxColumn,
+            this.vouchernoDataGridViewTextBoxColumn,
+            this.voucherdateDataGridViewTextBoxColumn,
+            this.voucheramountDataGridViewTextBoxColumn,
+            this.amountpandingDataGridViewTextBoxColumn,
+            this.imageDataGridViewImageColumn,
+            this.vouchertypeDataGridViewTextBoxColumn});
+            this.voucherDataGridView.DataSource = this.voucher1BindingSource;
             this.voucherDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.voucherDataGridView.GridColor = System.Drawing.SystemColors.Control;
             this.voucherDataGridView.Location = new System.Drawing.Point(3, 23);
@@ -342,65 +347,72 @@
             this.voucherDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.voucherDataGridView.Size = new System.Drawing.Size(513, 243);
             this.voucherDataGridView.TabIndex = 0;
+            this.voucherDataGridView.SelectionChanged += new System.EventHandler(this.voucherDataGridView_SelectionChanged);
             // 
-            // dataGridViewTextBoxColumn3
+            // voucheridDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "party_name";
-            this.dataGridViewTextBoxColumn3.HeaderText = "PARTY NAME";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn3.Width = 150;
+            this.voucheridDataGridViewTextBoxColumn.DataPropertyName = "voucher_id";
+            this.voucheridDataGridViewTextBoxColumn.HeaderText = "voucher_id";
+            this.voucheridDataGridViewTextBoxColumn.Name = "voucheridDataGridViewTextBoxColumn";
+            this.voucheridDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn4
+            // partynameDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "voucher_no";
-            this.dataGridViewTextBoxColumn4.HeaderText = "BILL NO";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.partynameDataGridViewTextBoxColumn.DataPropertyName = "party_name";
+            this.partynameDataGridViewTextBoxColumn.HeaderText = "party_name";
+            this.partynameDataGridViewTextBoxColumn.Name = "partynameDataGridViewTextBoxColumn";
+            this.partynameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn5
+            // vouchernoDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "voucher_date";
-            this.dataGridViewTextBoxColumn5.HeaderText = "BILLING DATE";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn5.Width = 150;
+            this.vouchernoDataGridViewTextBoxColumn.DataPropertyName = "voucher_no";
+            this.vouchernoDataGridViewTextBoxColumn.HeaderText = "voucher_no";
+            this.vouchernoDataGridViewTextBoxColumn.Name = "vouchernoDataGridViewTextBoxColumn";
+            this.vouchernoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn6
+            // voucherdateDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "voucher_amount";
-            this.dataGridViewTextBoxColumn6.HeaderText = "BILL AMOUNT";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.voucherdateDataGridViewTextBoxColumn.DataPropertyName = "voucher_date";
+            this.voucherdateDataGridViewTextBoxColumn.HeaderText = "voucher_date";
+            this.voucherdateDataGridViewTextBoxColumn.Name = "voucherdateDataGridViewTextBoxColumn";
+            this.voucherdateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn7
+            // voucheramountDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "amount_panding";
-            this.dataGridViewTextBoxColumn7.HeaderText = "AMOUNT PENDING";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.voucheramountDataGridViewTextBoxColumn.DataPropertyName = "voucher_amount";
+            this.voucheramountDataGridViewTextBoxColumn.HeaderText = "voucher_amount";
+            this.voucheramountDataGridViewTextBoxColumn.Name = "voucheramountDataGridViewTextBoxColumn";
+            this.voucheramountDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn2
+            // amountpandingDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "voucher_type";
-            this.dataGridViewTextBoxColumn2.HeaderText = "VOUCHER TYPE";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.amountpandingDataGridViewTextBoxColumn.DataPropertyName = "amount_panding";
+            this.amountpandingDataGridViewTextBoxColumn.HeaderText = "amount_panding";
+            this.amountpandingDataGridViewTextBoxColumn.Name = "amountpandingDataGridViewTextBoxColumn";
+            this.amountpandingDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // imageDataGridViewImageColumn
+            // 
+            this.imageDataGridViewImageColumn.DataPropertyName = "image";
+            this.imageDataGridViewImageColumn.HeaderText = "image";
+            this.imageDataGridViewImageColumn.Name = "imageDataGridViewImageColumn";
+            this.imageDataGridViewImageColumn.ReadOnly = true;
+            // 
+            // vouchertypeDataGridViewTextBoxColumn
+            // 
+            this.vouchertypeDataGridViewTextBoxColumn.DataPropertyName = "voucher_type";
+            this.vouchertypeDataGridViewTextBoxColumn.HeaderText = "voucher_type";
+            this.vouchertypeDataGridViewTextBoxColumn.Name = "vouchertypeDataGridViewTextBoxColumn";
+            this.vouchertypeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button8);
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.addPartyNameButton);
+            this.groupBox1.Controls.Add(this.deleteButton);
+            this.groupBox1.Controls.Add(this.clearButton);
+            this.groupBox1.Controls.Add(this.modifyButton);
+            this.groupBox1.Controls.Add(this.saveButton);
+            this.groupBox1.Controls.Add(this.addButton);
             this.groupBox1.Controls.Add(amount_pandingLabel);
             this.groupBox1.Controls.Add(this.amount_pandingTextBox);
             this.groupBox1.Controls.Add(voucher_amountLabel);
@@ -421,73 +433,89 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
-            // button5
+            // addPartyNameButton
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.addPartyNameButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(410, 205);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(95, 30);
-            this.button5.TabIndex = 17;
-            this.button5.Text = "Delete";
-            this.button5.UseVisualStyleBackColor = true;
+            this.addPartyNameButton.Location = new System.Drawing.Point(305, 30);
+            this.addPartyNameButton.Name = "addPartyNameButton";
+            this.addPartyNameButton.Size = new System.Drawing.Size(71, 59);
+            this.addPartyNameButton.TabIndex = 18;
+            this.addPartyNameButton.Text = "Add Party Name";
+            this.addPartyNameButton.UseVisualStyleBackColor = true;
+            this.addPartyNameButton.Click += new System.EventHandler(this.addPartyNameButton_Click);
             // 
-            // button4
+            // deleteButton
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(410, 154);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(95, 30);
-            this.button4.TabIndex = 16;
-            this.button4.Text = "Clear";
-            this.button4.UseVisualStyleBackColor = true;
+            this.deleteButton.Location = new System.Drawing.Point(410, 205);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(95, 30);
+            this.deleteButton.TabIndex = 17;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // clearButton
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(410, 112);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(95, 30);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "Modify";
-            this.button3.UseVisualStyleBackColor = true;
+            this.clearButton.Location = new System.Drawing.Point(410, 154);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(95, 30);
+            this.clearButton.TabIndex = 16;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
-            // button2
+            // modifyButton
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.modifyButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(410, 67);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 30);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Save";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.modifyButton.Location = new System.Drawing.Point(410, 112);
+            this.modifyButton.Name = "modifyButton";
+            this.modifyButton.Size = new System.Drawing.Size(95, 30);
+            this.modifyButton.TabIndex = 15;
+            this.modifyButton.Text = "Modify";
+            this.modifyButton.UseVisualStyleBackColor = true;
+            this.modifyButton.Click += new System.EventHandler(this.modifyButton_Click);
             // 
-            // button1
+            // saveButton
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(410, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 30);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.saveButton.Location = new System.Drawing.Point(410, 67);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(95, 30);
+            this.saveButton.TabIndex = 14;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // addButton
+            // 
+            this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.addButton.Location = new System.Drawing.Point(410, 19);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(95, 30);
+            this.addButton.TabIndex = 13;
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // amount_pandingTextBox
             // 
             this.amount_pandingTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.amount_pandingTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.voucherBindingSource, "amount_panding", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0.00", "C2"));
+            this.amount_pandingTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.voucher1BindingSource, "amount_panding", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0.00", "C2"));
+            this.amount_pandingTextBox.Enabled = false;
             this.amount_pandingTextBox.Location = new System.Drawing.Point(138, 208);
             this.amount_pandingTextBox.Name = "amount_pandingTextBox";
             this.amount_pandingTextBox.Size = new System.Drawing.Size(151, 23);
             this.amount_pandingTextBox.TabIndex = 12;
+            this.amount_pandingTextBox.Validated += new System.EventHandler(this.amount_pandingTextBox_Validated);
             // 
             // voucher_amountTextBox
             // 
@@ -495,20 +523,22 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.voucher_amountTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
-            this.voucher_amountTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.voucherBindingSource, "voucher_amount", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0.00", "C2"));
+            this.voucher_amountTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.voucher1BindingSource, "voucher_amount", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0.00", "C2"));
             this.voucher_amountTextBox.Location = new System.Drawing.Point(138, 169);
             this.voucher_amountTextBox.Name = "voucher_amountTextBox";
             this.voucher_amountTextBox.Size = new System.Drawing.Size(151, 23);
             this.voucher_amountTextBox.TabIndex = 10;
+            this.voucher_amountTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.voucher_amountTextBox_Validating);
             // 
             // voucher_dateDateTimePicker
             // 
             this.voucher_dateDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.voucher_dateDateTimePicker.CustomFormat = "dd/mm/yyyy";
-            this.voucher_dateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.voucherBindingSource, "voucher_date", true));
-            this.voucher_dateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.voucher_dateDateTimePicker.CustomFormat = "";
+            this.voucher_dateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.voucher1BindingSource, "voucher_date", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
+            this.voucher_dateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.voucher1BindingSource, "voucher_date", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
+            this.voucher_dateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.voucher_dateDateTimePicker.Location = new System.Drawing.Point(138, 127);
             this.voucher_dateDateTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
             this.voucher_dateDateTimePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
@@ -516,29 +546,36 @@
             this.voucher_dateDateTimePicker.Size = new System.Drawing.Size(151, 23);
             this.voucher_dateDateTimePicker.TabIndex = 8;
             this.voucher_dateDateTimePicker.Value = new System.DateTime(2022, 11, 23, 0, 0, 0, 0);
+            this.voucher_dateDateTimePicker.Validating += new System.ComponentModel.CancelEventHandler(this.voucher_dateDateTimePicker_Validating);
             // 
             // voucher_noTextBox
             // 
             this.voucher_noTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.voucher_noTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.voucherBindingSource, "voucher_no", true));
+            this.voucher_noTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.voucher1BindingSource, "voucher_no", true));
             this.voucher_noTextBox.Location = new System.Drawing.Point(138, 87);
             this.voucher_noTextBox.Name = "voucher_noTextBox";
             this.voucher_noTextBox.Size = new System.Drawing.Size(151, 23);
             this.voucher_noTextBox.TabIndex = 6;
+            this.voucher_noTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.voucher_noTextBox_Validating);
             // 
             // party_nameComboBox
             // 
             this.party_nameComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.party_nameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.voucherBindingSource, "party_name", true));
+            this.party_nameComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.party_nameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.voucher1BindingSource, "party_name", true));
             this.party_nameComboBox.FormattingEnabled = true;
+            this.party_nameComboBox.Items.AddRange(new object[] {
+            "britania",
+            "bisk farm"});
             this.party_nameComboBox.Location = new System.Drawing.Point(138, 48);
             this.party_nameComboBox.Name = "party_nameComboBox";
             this.party_nameComboBox.Size = new System.Drawing.Size(151, 24);
             this.party_nameComboBox.TabIndex = 4;
+            this.party_nameComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.party_nameComboBox_Validating);
             // 
             // voucher_typeComboBox
             // 
@@ -547,7 +584,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.voucher_typeComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.voucher_typeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.voucher_typeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.voucherBindingSource, "voucher_type", true));
+            this.voucher_typeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.voucher1BindingSource, "voucher_type", true));
+            this.voucher_typeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.voucher1BindingSource, "voucher_type", true));
+            this.voucher_typeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.voucher1BindingSource, "voucher_type", true));
             this.voucher_typeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.voucher_typeComboBox.Items.AddRange(new object[] {
             "Payment",
@@ -556,6 +595,7 @@
             this.voucher_typeComboBox.Name = "voucher_typeComboBox";
             this.voucher_typeComboBox.Size = new System.Drawing.Size(151, 24);
             this.voucher_typeComboBox.TabIndex = 2;
+            this.voucher_typeComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.voucher_typeComboBox_Validating);
             // 
             // scanButton
             // 
@@ -581,10 +621,9 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.RowCount = 1;
             this.mainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.mainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.mainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 525F));
             this.mainPanel.Size = new System.Drawing.Size(896, 525);
             this.mainPanel.TabIndex = 1;
-            this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // rightPanel
             // 
@@ -608,7 +647,7 @@
             // 
             // imagePictureBox
             // 
-            this.imagePictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.voucherBindingSource, "image", true));
+            this.imagePictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.voucher1BindingSource, "image", true));
             this.imagePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imagePictureBox.Location = new System.Drawing.Point(3, 125);
             this.imagePictureBox.Name = "imagePictureBox";
@@ -679,26 +718,10 @@
             this.transactionBindingSource.DataMember = "transaction";
             this.transactionBindingSource.DataSource = this.bARMANSTOREDATABASEDataSet;
             // 
-            // voucherTableAdapter
-            // 
-            this.voucherTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.transactionTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = BarmanStoreProject.BARMANSTOREDATABASEDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.USERACCOUNTTABLETableAdapter = null;
-            this.tableAdapterManager.voucherTableAdapter = this.voucherTableAdapter;
-            // 
-            // transactionTableAdapter
-            // 
-            this.transactionTableAdapter.ClearBeforeFill = true;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.button6);
+            this.groupBox2.Controls.Add(this.paymentButton);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.groupBox2.Location = new System.Drawing.Point(3, 94);
@@ -706,6 +729,28 @@
             this.groupBox2.Size = new System.Drawing.Size(359, 25);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.voucher1BindingSource, "amount_panding", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.label1.Location = new System.Drawing.Point(6, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "label1";
+            // 
+            // paymentButton
+            // 
+            this.paymentButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.paymentButton.Location = new System.Drawing.Point(212, -1);
+            this.paymentButton.Name = "paymentButton";
+            this.paymentButton.Size = new System.Drawing.Size(141, 27);
+            this.paymentButton.TabIndex = 0;
+            this.paymentButton.Text = "Make Payment";
+            this.paymentButton.UseVisualStyleBackColor = true;
+            this.paymentButton.Click += new System.EventHandler(this.paymentButton_Click);
             // 
             // groupBox3
             // 
@@ -719,27 +764,6 @@
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             // 
-            // button6
-            // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(212, -1);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(141, 27);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "Make Payment";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.voucherBindingSource, "amount_panding", true));
-            this.label1.Location = new System.Drawing.Point(6, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
-            // 
             // button7
             // 
             this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -750,17 +774,24 @@
             this.button7.TabIndex = 1;
             this.button7.Text = "Browse";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.imagePictureBox_Click);
             // 
-            // button8
+            // tableAdapterManager
             // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button8.Location = new System.Drawing.Point(305, 30);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(71, 59);
-            this.button8.TabIndex = 18;
-            this.button8.Text = "Add Party Name";
-            this.button8.UseVisualStyleBackColor = true;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.partyTableAdapter = null;
+            this.tableAdapterManager.transactionTableAdapter = this.transactionTableAdapter;
+            this.tableAdapterManager.UpdateOrder = BarmanStoreProject.BARMANSTOREDATABASEDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.USERACCOUNTTABLETableAdapter = null;
+            this.tableAdapterManager.voucher1TableAdapter = this.voucher1TableAdapter;
+            // 
+            // transactionTableAdapter
+            // 
+            this.transactionTableAdapter.ClearBeforeFill = true;
+            // 
+            // voucher1TableAdapter
+            // 
+            this.voucher1TableAdapter.ClearBeforeFill = true;
             // 
             // VoucherForm
             // 
@@ -776,7 +807,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.voucherBindingNavigator)).EndInit();
             this.voucherBindingNavigator.ResumeLayout(false);
             this.voucherBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.voucherBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.voucher1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bARMANSTOREDATABASEDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.voucherDataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -798,9 +829,36 @@
         private System.Windows.Forms.TableLayoutPanel vouchergridPanel;
         
         private BARMANSTOREDATABASEDataSet bARMANSTOREDATABASEDataSet;
-        private System.Windows.Forms.BindingSource voucherBindingSource;
-        private BARMANSTOREDATABASEDataSetTableAdapters.voucherTableAdapter voucherTableAdapter;
         private BARMANSTOREDATABASEDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.TableLayoutPanel mainPanel;
+        private System.Windows.Forms.BindingSource transactionBindingSource;
+        private BARMANSTOREDATABASEDataSetTableAdapters.transactionTableAdapter transactionTableAdapter;
+        private System.Windows.Forms.TableLayoutPanel rightPanel;
+        private System.Windows.Forms.DataGridView transactionDataGridView;
+        private System.Windows.Forms.PictureBox imagePictureBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button scanButton;
+        private System.Windows.Forms.ComboBox voucher_typeComboBox;
+        private System.Windows.Forms.ComboBox party_nameComboBox;
+        private System.Windows.Forms.TextBox amount_pandingTextBox;
+        private System.Windows.Forms.TextBox voucher_amountTextBox;
+        private System.Windows.Forms.DateTimePicker voucher_dateDateTimePicker;
+        private System.Windows.Forms.TextBox voucher_noTextBox;
+        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Button modifyButton;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button paymentButton;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button addPartyNameButton;
         private System.Windows.Forms.BindingNavigator voucherBindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
@@ -815,40 +873,15 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton voucherBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView voucherDataGridView;
-        private System.Windows.Forms.TableLayoutPanel mainPanel;
-        private System.Windows.Forms.BindingSource transactionBindingSource;
-        private BARMANSTOREDATABASEDataSetTableAdapters.transactionTableAdapter transactionTableAdapter;
-        private System.Windows.Forms.TableLayoutPanel rightPanel;
-        private System.Windows.Forms.DataGridView transactionDataGridView;
-        private System.Windows.Forms.PictureBox imagePictureBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button scanButton;
-        private System.Windows.Forms.ComboBox voucher_typeComboBox;
-        private System.Windows.Forms.ComboBox party_nameComboBox;
-        private System.Windows.Forms.TextBox amount_pandingTextBox;
-        private System.Windows.Forms.TextBox voucher_amountTextBox;
-        private System.Windows.Forms.DateTimePicker voucher_dateDateTimePicker;
-        private System.Windows.Forms.TextBox voucher_noTextBox;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.BindingSource voucher1BindingSource;
+        private BARMANSTOREDATABASEDataSetTableAdapters.voucher1TableAdapter voucher1TableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn voucheridDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn partynameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vouchernoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn voucherdateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn voucheramountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amountpandingDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn imageDataGridViewImageColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vouchertypeDataGridViewTextBoxColumn;
     }
 }
