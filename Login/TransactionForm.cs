@@ -28,7 +28,7 @@ namespace BarmanStoreProject
         {
             // TODO: This line of code loads data into the 'bARMANSTOREDATABASEDataSet.transaction' table. You can move, or remove it, as needed.
             this.transactionTableAdapter.Fill(this.bARMANSTOREDATABASEDataSet.transaction);
-
+            
         }
 
         private void trans_modeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,9 +64,11 @@ namespace BarmanStoreProject
 
         public void VoucherMode(string mode,string party_name="",string bill_no="",string amount_pending="")
         {
+            
             trans_modeComboBox.SelectedIndex = 0;
             switch (mode)
             {
+                
                 case "Payment":
                     trans_typeComboBox.Text = "Payment";
                     trans_typeComboBox.Enabled=false;
@@ -79,6 +81,26 @@ namespace BarmanStoreProject
                     break;
 
             }
+        }
+
+        private void trans_amountTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            radioButton1.Checked = false;
+            errorProvider1.SetError(trans_amountTextBox, null);
+            if (VoucherForm.CurrencyToDec(amount_pendingTextBox.Text)< VoucherForm.CurrencyToDec(trans_amountTextBox.Text)
+                || !(VoucherForm.CurrencyToDec(trans_amountTextBox.Text)>0)
+                )
+            {
+                trans_amountTextBox.Text="0";
+                errorProvider1.SetError(trans_amountTextBox, "Transaction Amount must currency value and" + Environment.NewLine + " less or equel than Amount Pending ");
+            }
+            if (VoucherForm.CurrencyToDec(amount_pendingTextBox.Text) == VoucherForm.CurrencyToDec(trans_amountTextBox.Text)) { radioButton1.Checked = true; }
+            MessageBox.Show(errorProvider1.GetError(trans_amountTextBox));
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked) trans_amountTextBox.Text = amount_pendingTextBox.Text;
         }
     }
 }

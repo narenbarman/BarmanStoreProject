@@ -73,6 +73,8 @@
             this.upi_idTextBox = new System.Windows.Forms.TextBox();
             this.transactionTableAdapter = new BarmanStoreProject.BARMANSTOREDATABASEDataSetTableAdapters.transactionTableAdapter();
             this.tableAdapterManager = new BarmanStoreProject.BARMANSTOREDATABASEDataSetTableAdapters.TableAdapterManager();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             trans_amountLabel = new System.Windows.Forms.Label();
             trans_typeLabel = new System.Windows.Forms.Label();
             trans_billnoLabel = new System.Windows.Forms.Label();
@@ -97,6 +99,7 @@
             this.tabControl1.SuspendLayout();
             this.chqTab.SuspendLayout();
             this.upiTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // trans_amountLabel
@@ -275,6 +278,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(label1);
             this.groupBox1.Controls.Add(this.amount_pendingTextBox);
             this.groupBox1.Controls.Add(trans_amountLabel);
@@ -299,7 +303,6 @@
             // amount_pendingTextBox
             // 
             this.amount_pendingTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.amount_pendingTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.transactionBindingSource, "trans_amount", true));
             this.amount_pendingTextBox.Location = new System.Drawing.Point(531, 10);
             this.amount_pendingTextBox.Name = "amount_pendingTextBox";
             this.amount_pendingTextBox.Size = new System.Drawing.Size(200, 23);
@@ -318,11 +321,12 @@
             // trans_amountTextBox
             // 
             this.trans_amountTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.trans_amountTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.transactionBindingSource, "trans_amount", true));
+            this.trans_amountTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.transactionBindingSource, "trans_amount", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0.00", "C2"));
             this.trans_amountTextBox.Location = new System.Drawing.Point(531, 58);
             this.trans_amountTextBox.Name = "trans_amountTextBox";
             this.trans_amountTextBox.Size = new System.Drawing.Size(200, 23);
             this.trans_amountTextBox.TabIndex = 3;
+            this.trans_amountTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.trans_amountTextBox_Validating);
             // 
             // trans_typeComboBox
             // 
@@ -548,6 +552,22 @@
             this.tableAdapterManager.USERACCOUNTTABLETableAdapter = null;
             this.tableAdapterManager.voucher1TableAdapter = null;
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(624, 83);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(107, 21);
+            this.radioButton1.TabIndex = 16;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Full Payment";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // TransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -568,6 +588,7 @@
             this.chqTab.PerformLayout();
             this.upiTab.ResumeLayout(false);
             this.upiTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -602,5 +623,7 @@
         private System.Windows.Forms.TextBox upi_idTextBox;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button submitButton;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

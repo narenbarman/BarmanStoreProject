@@ -243,7 +243,7 @@ namespace BarmanStoreProject
             FormStatus();
         }
         
-        private decimal CurrencyToDec(string cCurrency)
+        internal static decimal CurrencyToDec(string cCurrency)
         {
             string str = cCurrency;
             decimal decval;
@@ -271,6 +271,7 @@ namespace BarmanStoreProject
 
         private void voucherDataGridView_SelectionChanged(object sender, EventArgs e)
         {
+            
             paymentButton.Visible = false;
             if (voucherDataGridView.SelectedRows.Count > 0)
             {
@@ -283,8 +284,9 @@ namespace BarmanStoreProject
         private void paymentButton_Click(object sender, EventArgs e)
         {
             TransactionForm form = new TransactionForm();
-            form.VoucherMode("Payment", party_nameComboBox.Text, ""+voucherDataGridView.Rows[voucherDataGridView.CurrentRow.Index].Cells[5].Value, amount_pandingTextBox.Text);
-                form.Show();
+                 form.Show();
+            form.VoucherMode("Payment", party_nameComboBox.Text, "" + voucherDataGridView.Rows[voucherDataGridView.CurrentRow.Index].Cells[5].Value, amount_pandingTextBox.Text);
+
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
