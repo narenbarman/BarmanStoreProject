@@ -443,6 +443,7 @@
             this.addPartyNameButton.TabIndex = 18;
             this.addPartyNameButton.Text = "Add Party Name";
             this.addPartyNameButton.UseVisualStyleBackColor = true;
+            this.addPartyNameButton.Visible = false;
             this.addPartyNameButton.Click += new System.EventHandler(this.addPartyNameButton_Click);
             // 
             // deleteButton
@@ -455,6 +456,7 @@
             this.deleteButton.TabIndex = 17;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // clearButton
             // 

@@ -23,16 +23,13 @@ namespace BarmanStoreProject
         public VoucherForm()
         {
             InitializeComponent();
+            Party_nameComboLoad();
         }
 
         private void VoucherForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'bARMANSTOREDATABASEDataSet.voucher1' table. You can move, or remove it, as needed.
             this.voucher1TableAdapter.FillByVoucherType(this.bARMANSTOREDATABASEDataSet.voucher1, "payment");
-            // TODO: This line of code loads data into the 'bARMANSTOREDATABASEDataSet.transaction' table. You can move, or remove it, as needed.
-            this.transactionTableAdapter.Fill(this.bARMANSTOREDATABASEDataSet.transaction);
-            // TODO: This line of code loads data into the 'bARMANSTOREDATABASEDataSet.voucher' table. You can move, or remove it, as needed.
-            //this.voucherTableAdapter.Fill(this.bARMANSTOREDATABASEDataSet.voucher1);
             FormStatus();
 
         }
@@ -105,9 +102,12 @@ namespace BarmanStoreProject
 
         private void addPartyNameButton_Click(object sender, EventArgs e)
         {
-            party_nameComboBox.Items.Add(party_nameComboBox.Text);
-            party_nameComboBox.Text = party_nameComboBox.Text;
+            BARMANSTOREDATABASEDataSetTableAdapters.partyTableAdapter partyTableAdapter=new partyTableAdapter();
+            partyTableAdapter.InsertPartyName(party_nameComboBox.Text);
+            //party_nameComboBox.Items.Add(party_nameComboBox.Text);
+            //party_nameComboBox.Text = party_nameComboBox.Text;
             addPartyNameButton.Visible = false;
+            Party_nameComboLoad();
 
         }
 
@@ -256,24 +256,40 @@ namespace BarmanStoreProject
 
         private void Party_nameComboLoad()
         {
-            bARMANSTOREDATABASEDataSet.party partyTable = new bARMANSTOREDATABASEDataSet.party();
+            BARMANSTOREDATABASEDataSet.partyDataTable partyTable = new BARMANSTOREDATABASEDataSet.partyDataTable();
             BARMANSTOREDATABASEDataSetTableAdapters.partyTableAdapter partyTableAdapter = new partyTableAdapter();
             partyTableAdapter.Fill(partyTable);
-            ipartyTable.
+            if(partyTable.Rows.Count>0)
+            {
+                party_nameComboBox.Items.Clear();
+                for (int n=0; n < partyTable.Rows.Count; n++)
+                {
+                    party_nameComboBox.Items.Add(partyTable.Rows[n][0]);
+                }
+            }
         }
 
         private void voucherDataGridView_SelectionChanged(object sender, EventArgs e)
         {
+            paymentButton.Visible = false;
             if (voucherDataGridView.SelectedRows.Count > 0)
             {
                string voucher_no=((string)voucherDataGridView.Rows[voucherDataGridView.CurrentRow.Index].Cells[2].Value);
-                transactionTableAdapter.FillByBillNo(bARMANSTOREDATABASEDataSet.transaction,voucher_no);
+               transactionTableAdapter.FillByBillNo(bARMANSTOREDATABASEDataSet.transaction,voucher_no);
+               if ((decimal)voucherDataGridView.Rows[voucherDataGridView.CurrentRow.Index].Cells[5].Value > 0) { paymentButton.Visible = true; }
             }
         }
 
         private void paymentButton_Click(object sender, EventArgs e)
         {
+            TransactionForm form = new TransactionForm();
+            form.VoucherMode("Payment", party_nameComboBox.Text, ""+voucherDataGridView.Rows[voucherDataGridView.CurrentRow.Index].Cells[5].Value, amount_pandingTextBox.Text);
+                form.Show();
+        }
 
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            voucher1BindingSource.RemoveCurrent();
         }
     }
 }
