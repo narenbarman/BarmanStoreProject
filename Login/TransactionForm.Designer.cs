@@ -47,9 +47,8 @@
             System.Windows.Forms.Label label1;
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.amount_pendingTextBox = new System.Windows.Forms.TextBox();
-            this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bARMANSTOREDATABASEDataSet = new BarmanStoreProject.BARMANSTOREDATABASEDataSet();
             this.trans_amountTextBox = new System.Windows.Forms.TextBox();
             this.trans_typeComboBox = new System.Windows.Forms.ComboBox();
             this.trans_billnoTextBox = new System.Windows.Forms.TextBox();
@@ -71,10 +70,11 @@
             this.upi_trnoTextBox = new System.Windows.Forms.TextBox();
             this.upi_phonenoTextBox = new System.Windows.Forms.TextBox();
             this.upi_idTextBox = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bARMANSTOREDATABASEDataSet = new BarmanStoreProject.BARMANSTOREDATABASEDataSet();
             this.transactionTableAdapter = new BarmanStoreProject.BARMANSTOREDATABASEDataSetTableAdapters.transactionTableAdapter();
             this.tableAdapterManager = new BarmanStoreProject.BARMANSTOREDATABASEDataSetTableAdapters.TableAdapterManager();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             trans_amountLabel = new System.Windows.Forms.Label();
             trans_typeLabel = new System.Windows.Forms.Label();
             trans_billnoLabel = new System.Windows.Forms.Label();
@@ -93,13 +93,13 @@
             label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bARMANSTOREDATABASEDataSet)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.chqTab.SuspendLayout();
             this.upiTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bARMANSTOREDATABASEDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // trans_amountLabel
@@ -166,7 +166,7 @@
             // 
             chq_partyLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             chq_partyLabel.AutoSize = true;
-            chq_partyLabel.Location = new System.Drawing.Point(28, 19);
+            chq_partyLabel.Location = new System.Drawing.Point(28, 15);
             chq_partyLabel.Name = "chq_partyLabel";
             chq_partyLabel.Size = new System.Drawing.Size(227, 17);
             chq_partyLabel.TabIndex = 14;
@@ -176,7 +176,7 @@
             // 
             chq_bankLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             chq_bankLabel.AutoSize = true;
-            chq_bankLabel.Location = new System.Drawing.Point(29, 67);
+            chq_bankLabel.Location = new System.Drawing.Point(29, 63);
             chq_bankLabel.Name = "chq_bankLabel";
             chq_bankLabel.Size = new System.Drawing.Size(81, 17);
             chq_bankLabel.TabIndex = 16;
@@ -186,7 +186,7 @@
             // 
             chq_noLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             chq_noLabel.AutoSize = true;
-            chq_noLabel.Location = new System.Drawing.Point(396, 67);
+            chq_noLabel.Location = new System.Drawing.Point(396, 63);
             chq_noLabel.Name = "chq_noLabel";
             chq_noLabel.Size = new System.Drawing.Size(79, 17);
             chq_noLabel.TabIndex = 18;
@@ -196,7 +196,7 @@
             // 
             chq_amountLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             chq_amountLabel.AutoSize = true;
-            chq_amountLabel.Location = new System.Drawing.Point(29, 119);
+            chq_amountLabel.Location = new System.Drawing.Point(29, 115);
             chq_amountLabel.Name = "chq_amountLabel";
             chq_amountLabel.Size = new System.Drawing.Size(109, 17);
             chq_amountLabel.TabIndex = 20;
@@ -206,7 +206,7 @@
             // 
             chq_dateLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             chq_dateLabel.AutoSize = true;
-            chq_dateLabel.Location = new System.Drawing.Point(396, 119);
+            chq_dateLabel.Location = new System.Drawing.Point(396, 115);
             chq_dateLabel.Name = "chq_dateLabel";
             chq_dateLabel.Size = new System.Drawing.Size(91, 17);
             chq_dateLabel.TabIndex = 22;
@@ -300,6 +300,18 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(624, 83);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(107, 21);
+            this.radioButton1.TabIndex = 16;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Full Payment";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
             // amount_pendingTextBox
             // 
             this.amount_pendingTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -307,16 +319,6 @@
             this.amount_pendingTextBox.Name = "amount_pendingTextBox";
             this.amount_pendingTextBox.Size = new System.Drawing.Size(200, 23);
             this.amount_pendingTextBox.TabIndex = 15;
-            // 
-            // transactionBindingSource
-            // 
-            this.transactionBindingSource.DataMember = "transaction";
-            this.transactionBindingSource.DataSource = this.bARMANSTOREDATABASEDataSet;
-            // 
-            // bARMANSTOREDATABASEDataSet
-            // 
-            this.bARMANSTOREDATABASEDataSet.DataSetName = "BARMANSTOREDATABASEDataSet";
-            this.bARMANSTOREDATABASEDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // trans_amountTextBox
             // 
@@ -326,7 +328,7 @@
             this.trans_amountTextBox.Name = "trans_amountTextBox";
             this.trans_amountTextBox.Size = new System.Drawing.Size(200, 23);
             this.trans_amountTextBox.TabIndex = 3;
-            this.trans_amountTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.trans_amountTextBox_Validating);
+            this.trans_amountTextBox.TextChanged += new System.EventHandler(this.trans_amountTextBox_TextChanged);
             // 
             // trans_typeComboBox
             // 
@@ -353,6 +355,7 @@
             // trans_dateDateTimePicker
             // 
             this.trans_dateDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.trans_dateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.transactionBindingSource, "trans_date", true));
             this.trans_dateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.transactionBindingSource, "trans_date", true));
             this.trans_dateDateTimePicker.Location = new System.Drawing.Point(531, 106);
             this.trans_dateDateTimePicker.Name = "trans_dateDateTimePicker";
@@ -371,7 +374,10 @@
             // trans_modeComboBox
             // 
             this.trans_modeComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.trans_modeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.transactionBindingSource, "trans_mode", true));
+            this.trans_modeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.transactionBindingSource, "trans_mode", true));
             this.trans_modeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.transactionBindingSource, "trans_mode", true));
+            this.trans_modeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.trans_modeComboBox.FormattingEnabled = true;
             this.trans_modeComboBox.Items.AddRange(new object[] {
             "Cash",
@@ -402,15 +408,18 @@
             this.cancelButton.TabIndex = 1;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // submitButton
             // 
+            this.submitButton.Enabled = false;
             this.submitButton.Location = new System.Drawing.Point(560, -1);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 28);
             this.submitButton.TabIndex = 0;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // tabControl1
             // 
@@ -448,46 +457,51 @@
             // 
             this.chq_dateDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chq_dateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.transactionBindingSource, "chq_date", true));
-            this.chq_dateDateTimePicker.Location = new System.Drawing.Point(399, 139);
+            this.chq_dateDateTimePicker.Location = new System.Drawing.Point(399, 135);
             this.chq_dateDateTimePicker.Name = "chq_dateDateTimePicker";
             this.chq_dateDateTimePicker.Size = new System.Drawing.Size(328, 23);
             this.chq_dateDateTimePicker.TabIndex = 23;
+            this.chq_dateDateTimePicker.ValueChanged += new System.EventHandler(this.ChequeValidate);
             // 
             // chq_amountTextBox
             // 
             this.chq_amountTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chq_amountTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.transactionBindingSource, "chq_amount", true));
-            this.chq_amountTextBox.Location = new System.Drawing.Point(31, 139);
+            this.chq_amountTextBox.Location = new System.Drawing.Point(31, 135);
             this.chq_amountTextBox.Name = "chq_amountTextBox";
             this.chq_amountTextBox.Size = new System.Drawing.Size(339, 23);
             this.chq_amountTextBox.TabIndex = 21;
+            this.chq_amountTextBox.TextChanged += new System.EventHandler(this.ChequeValidate);
             // 
             // chq_noTextBox
             // 
             this.chq_noTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chq_noTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.transactionBindingSource, "chq_no", true));
-            this.chq_noTextBox.Location = new System.Drawing.Point(399, 87);
+            this.chq_noTextBox.Location = new System.Drawing.Point(399, 83);
             this.chq_noTextBox.Name = "chq_noTextBox";
             this.chq_noTextBox.Size = new System.Drawing.Size(328, 23);
             this.chq_noTextBox.TabIndex = 19;
+            this.chq_noTextBox.TextChanged += new System.EventHandler(this.ChequeValidate);
             // 
             // chq_bankTextBox
             // 
             this.chq_bankTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chq_bankTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.transactionBindingSource, "chq_bank", true));
-            this.chq_bankTextBox.Location = new System.Drawing.Point(32, 87);
+            this.chq_bankTextBox.Location = new System.Drawing.Point(32, 83);
             this.chq_bankTextBox.Name = "chq_bankTextBox";
             this.chq_bankTextBox.Size = new System.Drawing.Size(338, 23);
             this.chq_bankTextBox.TabIndex = 17;
+            this.chq_bankTextBox.TextChanged += new System.EventHandler(this.ChequeValidate);
             // 
             // chq_partyTextBox
             // 
             this.chq_partyTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chq_partyTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.transactionBindingSource, "chq_party", true));
-            this.chq_partyTextBox.Location = new System.Drawing.Point(32, 39);
+            this.chq_partyTextBox.Location = new System.Drawing.Point(32, 35);
             this.chq_partyTextBox.Name = "chq_partyTextBox";
             this.chq_partyTextBox.Size = new System.Drawing.Size(695, 23);
             this.chq_partyTextBox.TabIndex = 15;
+            this.chq_partyTextBox.TextChanged += new System.EventHandler(this.ChequeValidate);
             // 
             // upiTab
             // 
@@ -514,6 +528,7 @@
             this.upi_amountTextBox.Name = "upi_amountTextBox";
             this.upi_amountTextBox.Size = new System.Drawing.Size(200, 23);
             this.upi_amountTextBox.TabIndex = 31;
+            this.upi_amountTextBox.TextChanged += new System.EventHandler(this.UpiValidating);
             // 
             // upi_trnoTextBox
             // 
@@ -522,6 +537,7 @@
             this.upi_trnoTextBox.Name = "upi_trnoTextBox";
             this.upi_trnoTextBox.Size = new System.Drawing.Size(200, 23);
             this.upi_trnoTextBox.TabIndex = 29;
+            this.upi_trnoTextBox.TextChanged += new System.EventHandler(this.UpiValidating);
             // 
             // upi_phonenoTextBox
             // 
@@ -530,6 +546,7 @@
             this.upi_phonenoTextBox.Name = "upi_phonenoTextBox";
             this.upi_phonenoTextBox.Size = new System.Drawing.Size(200, 23);
             this.upi_phonenoTextBox.TabIndex = 27;
+            this.upi_phonenoTextBox.TextChanged += new System.EventHandler(this.UpiValidating);
             // 
             // upi_idTextBox
             // 
@@ -538,6 +555,21 @@
             this.upi_idTextBox.Name = "upi_idTextBox";
             this.upi_idTextBox.Size = new System.Drawing.Size(200, 23);
             this.upi_idTextBox.TabIndex = 25;
+            this.upi_idTextBox.TextChanged += new System.EventHandler(this.UpiValidating);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // transactionBindingSource
+            // 
+            this.transactionBindingSource.DataMember = "transaction";
+            this.transactionBindingSource.DataSource = this.bARMANSTOREDATABASEDataSet;
+            // 
+            // bARMANSTOREDATABASEDataSet
+            // 
+            this.bARMANSTOREDATABASEDataSet.DataSetName = "BARMANSTOREDATABASEDataSet";
+            this.bARMANSTOREDATABASEDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // transactionTableAdapter
             // 
@@ -552,22 +584,6 @@
             this.tableAdapterManager.USERACCOUNTTABLETableAdapter = null;
             this.tableAdapterManager.voucher1TableAdapter = null;
             // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(624, 83);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(107, 21);
-            this.radioButton1.TabIndex = 16;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Full Payment";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
             // TransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -580,8 +596,6 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bARMANSTOREDATABASEDataSet)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.chqTab.ResumeLayout(false);
@@ -589,6 +603,8 @@
             this.upiTab.ResumeLayout(false);
             this.upiTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bARMANSTOREDATABASEDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

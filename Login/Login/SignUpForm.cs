@@ -130,5 +130,10 @@ namespace BarmanStoreProject.UserAccount
             }
             else toolTip1.Active = false;
         }
+
+        private void SignUpForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

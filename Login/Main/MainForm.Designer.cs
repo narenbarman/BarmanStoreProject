@@ -59,6 +59,7 @@
             this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.purchaseBillsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -247,7 +248,8 @@
             // distributorsToolStripMenuItem
             // 
             this.distributorsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.distributorsToolStripMenuItem1});
+            this.distributorsToolStripMenuItem1,
+            this.purchaseBillsToolStripMenuItem});
             this.distributorsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.distributorsToolStripMenuItem.Name = "distributorsToolStripMenuItem";
             this.distributorsToolStripMenuItem.Size = new System.Drawing.Size(85, 25);
@@ -303,6 +305,13 @@
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
             this.helpToolStripMenuItem1.Size = new System.Drawing.Size(54, 25);
             this.helpToolStripMenuItem1.Text = "Help";
+            // 
+            // purchaseBillsToolStripMenuItem
+            // 
+            this.purchaseBillsToolStripMenuItem.Name = "purchaseBillsToolStripMenuItem";
+            this.purchaseBillsToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.purchaseBillsToolStripMenuItem.Text = "Purchase Bills";
+            this.purchaseBillsToolStripMenuItem.Click += new System.EventHandler(this.purchaseBillsToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -362,6 +371,7 @@
         private System.Windows.Forms.ToolStripMenuItem addNewDistributorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modifyDistributorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteDistributorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem purchaseBillsToolStripMenuItem;
         //public static System.Windows.Forms.Label activeUserLabel;
     }
 }

@@ -35,32 +35,16 @@
             System.Windows.Forms.Label voucher_dateLabel;
             System.Windows.Forms.Label voucher_amountLabel;
             System.Windows.Forms.Label amount_pandingLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VoucherForm));
             this.vouchergridPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.voucherBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.voucher1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bARMANSTOREDATABASEDataSet = new BarmanStoreProject.BARMANSTOREDATABASEDataSet();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.voucherBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.voucherDataGridView = new System.Windows.Forms.DataGridView();
-            this.voucheridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.partynameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vouchernoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.voucherdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.voucheramountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amountpandingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imageDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.vouchertypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.voucher1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bARMANSTOREDATABASEDataSet = new BarmanStoreProject.BARMANSTOREDATABASEDataSet();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.addPartyNameButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
@@ -99,11 +83,9 @@
             voucher_amountLabel = new System.Windows.Forms.Label();
             amount_pandingLabel = new System.Windows.Forms.Label();
             this.vouchergridPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.voucherBindingNavigator)).BeginInit();
-            this.voucherBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.voucherDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.voucher1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bARMANSTOREDATABASEDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.voucherDataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
@@ -172,59 +154,90 @@
             // 
             this.vouchergridPanel.ColumnCount = 1;
             this.vouchergridPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.vouchergridPanel.Controls.Add(this.voucherBindingNavigator, 0, 0);
-            this.vouchergridPanel.Controls.Add(this.voucherDataGridView, 0, 1);
-            this.vouchergridPanel.Controls.Add(this.groupBox1, 0, 2);
+            this.vouchergridPanel.Controls.Add(this.voucherDataGridView, 0, 0);
+            this.vouchergridPanel.Controls.Add(this.groupBox1, 0, 1);
             this.vouchergridPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vouchergridPanel.Location = new System.Drawing.Point(3, 3);
             this.vouchergridPanel.Name = "vouchergridPanel";
-            this.vouchergridPanel.RowCount = 3;
-            this.vouchergridPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.vouchergridPanel.RowCount = 2;
             this.vouchergridPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.vouchergridPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.vouchergridPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.vouchergridPanel.Size = new System.Drawing.Size(519, 519);
             this.vouchergridPanel.TabIndex = 0;
             // 
-            // voucherBindingNavigator
+            // voucherDataGridView
             // 
-            this.voucherBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.voucherBindingNavigator.BindingSource = this.voucher1BindingSource;
-            this.voucherBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.voucherBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.voucherBindingNavigator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.voucherBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem,
-            this.voucherBindingNavigatorSaveItem});
-            this.voucherBindingNavigator.Location = new System.Drawing.Point(0, 0);
-            this.voucherBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.voucherBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.voucherBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.voucherBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.voucherBindingNavigator.Name = "voucherBindingNavigator";
-            this.voucherBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.voucherBindingNavigator.Size = new System.Drawing.Size(519, 20);
-            this.voucherBindingNavigator.TabIndex = 1;
-            this.voucherBindingNavigator.Text = "bindingNavigator1";
+            this.voucherDataGridView.AutoGenerateColumns = false;
+            this.voucherDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.voucherDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.voucherDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.partynameDataGridViewTextBoxColumn,
+            this.vouchernoDataGridViewTextBoxColumn,
+            this.voucherdateDataGridViewTextBoxColumn,
+            this.voucheramountDataGridViewTextBoxColumn,
+            this.amountpandingDataGridViewTextBoxColumn,
+            this.vouchertypeDataGridViewTextBoxColumn});
+            this.voucherDataGridView.DataSource = this.voucher1BindingSource;
+            this.voucherDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.voucherDataGridView.GridColor = System.Drawing.SystemColors.Control;
+            this.voucherDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.voucherDataGridView.MultiSelect = false;
+            this.voucherDataGridView.Name = "voucherDataGridView";
+            this.voucherDataGridView.ReadOnly = true;
+            this.voucherDataGridView.RowHeadersVisible = false;
+            this.voucherDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.voucherDataGridView.Size = new System.Drawing.Size(513, 263);
+            this.voucherDataGridView.TabIndex = 0;
+            this.voucherDataGridView.SelectionChanged += new System.EventHandler(this.voucherDataGridView_SelectionChanged);
             // 
-            // bindingNavigatorAddNewItem
+            // partynameDataGridViewTextBoxColumn
             // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 17);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.partynameDataGridViewTextBoxColumn.DataPropertyName = "party_name";
+            this.partynameDataGridViewTextBoxColumn.HeaderText = "PARTY NAME";
+            this.partynameDataGridViewTextBoxColumn.Name = "partynameDataGridViewTextBoxColumn";
+            this.partynameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.partynameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // vouchernoDataGridViewTextBoxColumn
+            // 
+            this.vouchernoDataGridViewTextBoxColumn.DataPropertyName = "voucher_no";
+            this.vouchernoDataGridViewTextBoxColumn.HeaderText = "BILL NO";
+            this.vouchernoDataGridViewTextBoxColumn.Name = "vouchernoDataGridViewTextBoxColumn";
+            this.vouchernoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.vouchernoDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // voucherdateDataGridViewTextBoxColumn
+            // 
+            this.voucherdateDataGridViewTextBoxColumn.DataPropertyName = "voucher_date";
+            this.voucherdateDataGridViewTextBoxColumn.HeaderText = "BILL DATE";
+            this.voucherdateDataGridViewTextBoxColumn.Name = "voucherdateDataGridViewTextBoxColumn";
+            this.voucherdateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.voucherdateDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // voucheramountDataGridViewTextBoxColumn
+            // 
+            this.voucheramountDataGridViewTextBoxColumn.DataPropertyName = "voucher_amount";
+            this.voucheramountDataGridViewTextBoxColumn.HeaderText = "BILL  AMOUNT";
+            this.voucheramountDataGridViewTextBoxColumn.Name = "voucheramountDataGridViewTextBoxColumn";
+            this.voucheramountDataGridViewTextBoxColumn.ReadOnly = true;
+            this.voucheramountDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // amountpandingDataGridViewTextBoxColumn
+            // 
+            this.amountpandingDataGridViewTextBoxColumn.DataPropertyName = "amount_panding";
+            this.amountpandingDataGridViewTextBoxColumn.HeaderText = "AMOUNT PENDING";
+            this.amountpandingDataGridViewTextBoxColumn.Name = "amountpandingDataGridViewTextBoxColumn";
+            this.amountpandingDataGridViewTextBoxColumn.ReadOnly = true;
+            this.amountpandingDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // vouchertypeDataGridViewTextBoxColumn
+            // 
+            this.vouchertypeDataGridViewTextBoxColumn.DataPropertyName = "voucher_type";
+            this.vouchertypeDataGridViewTextBoxColumn.HeaderText = "VOUCHER TYPE";
+            this.vouchertypeDataGridViewTextBoxColumn.Name = "vouchertypeDataGridViewTextBoxColumn";
+            this.vouchertypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.vouchertypeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // voucher1BindingSource
             // 
@@ -235,175 +248,6 @@
             // 
             this.bARMANSTOREDATABASEDataSet.DataSetName = "BARMANSTOREDATABASEDataSet";
             this.bARMANSTOREDATABASEDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 17);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 17);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 17);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 17);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 20);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 20);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 17);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 17);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 20);
-            // 
-            // voucherBindingNavigatorSaveItem
-            // 
-            this.voucherBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.voucherBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("voucherBindingNavigatorSaveItem.Image")));
-            this.voucherBindingNavigatorSaveItem.Name = "voucherBindingNavigatorSaveItem";
-            this.voucherBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 17);
-            this.voucherBindingNavigatorSaveItem.Text = "Save Data";
-            this.voucherBindingNavigatorSaveItem.Click += new System.EventHandler(this.voucherBindingNavigatorSaveItem_Click);
-            // 
-            // voucherDataGridView
-            // 
-            this.voucherDataGridView.AutoGenerateColumns = false;
-            this.voucherDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.voucherDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.voucherDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.voucheridDataGridViewTextBoxColumn,
-            this.partynameDataGridViewTextBoxColumn,
-            this.vouchernoDataGridViewTextBoxColumn,
-            this.voucherdateDataGridViewTextBoxColumn,
-            this.voucheramountDataGridViewTextBoxColumn,
-            this.amountpandingDataGridViewTextBoxColumn,
-            this.imageDataGridViewImageColumn,
-            this.vouchertypeDataGridViewTextBoxColumn});
-            this.voucherDataGridView.DataSource = this.voucher1BindingSource;
-            this.voucherDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.voucherDataGridView.GridColor = System.Drawing.SystemColors.Control;
-            this.voucherDataGridView.Location = new System.Drawing.Point(3, 23);
-            this.voucherDataGridView.MultiSelect = false;
-            this.voucherDataGridView.Name = "voucherDataGridView";
-            this.voucherDataGridView.ReadOnly = true;
-            this.voucherDataGridView.RowHeadersVisible = false;
-            this.voucherDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.voucherDataGridView.Size = new System.Drawing.Size(513, 243);
-            this.voucherDataGridView.TabIndex = 0;
-            this.voucherDataGridView.SelectionChanged += new System.EventHandler(this.voucherDataGridView_SelectionChanged);
-            // 
-            // voucheridDataGridViewTextBoxColumn
-            // 
-            this.voucheridDataGridViewTextBoxColumn.DataPropertyName = "voucher_id";
-            this.voucheridDataGridViewTextBoxColumn.HeaderText = "voucher_id";
-            this.voucheridDataGridViewTextBoxColumn.Name = "voucheridDataGridViewTextBoxColumn";
-            this.voucheridDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // partynameDataGridViewTextBoxColumn
-            // 
-            this.partynameDataGridViewTextBoxColumn.DataPropertyName = "party_name";
-            this.partynameDataGridViewTextBoxColumn.HeaderText = "party_name";
-            this.partynameDataGridViewTextBoxColumn.Name = "partynameDataGridViewTextBoxColumn";
-            this.partynameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // vouchernoDataGridViewTextBoxColumn
-            // 
-            this.vouchernoDataGridViewTextBoxColumn.DataPropertyName = "voucher_no";
-            this.vouchernoDataGridViewTextBoxColumn.HeaderText = "voucher_no";
-            this.vouchernoDataGridViewTextBoxColumn.Name = "vouchernoDataGridViewTextBoxColumn";
-            this.vouchernoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // voucherdateDataGridViewTextBoxColumn
-            // 
-            this.voucherdateDataGridViewTextBoxColumn.DataPropertyName = "voucher_date";
-            this.voucherdateDataGridViewTextBoxColumn.HeaderText = "voucher_date";
-            this.voucherdateDataGridViewTextBoxColumn.Name = "voucherdateDataGridViewTextBoxColumn";
-            this.voucherdateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // voucheramountDataGridViewTextBoxColumn
-            // 
-            this.voucheramountDataGridViewTextBoxColumn.DataPropertyName = "voucher_amount";
-            this.voucheramountDataGridViewTextBoxColumn.HeaderText = "voucher_amount";
-            this.voucheramountDataGridViewTextBoxColumn.Name = "voucheramountDataGridViewTextBoxColumn";
-            this.voucheramountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // amountpandingDataGridViewTextBoxColumn
-            // 
-            this.amountpandingDataGridViewTextBoxColumn.DataPropertyName = "amount_panding";
-            this.amountpandingDataGridViewTextBoxColumn.HeaderText = "amount_panding";
-            this.amountpandingDataGridViewTextBoxColumn.Name = "amountpandingDataGridViewTextBoxColumn";
-            this.amountpandingDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // imageDataGridViewImageColumn
-            // 
-            this.imageDataGridViewImageColumn.DataPropertyName = "image";
-            this.imageDataGridViewImageColumn.HeaderText = "image";
-            this.imageDataGridViewImageColumn.Name = "imageDataGridViewImageColumn";
-            this.imageDataGridViewImageColumn.ReadOnly = true;
-            // 
-            // vouchertypeDataGridViewTextBoxColumn
-            // 
-            this.vouchertypeDataGridViewTextBoxColumn.DataPropertyName = "voucher_type";
-            this.vouchertypeDataGridViewTextBoxColumn.HeaderText = "voucher_type";
-            this.vouchertypeDataGridViewTextBoxColumn.Name = "vouchertypeDataGridViewTextBoxColumn";
-            this.vouchertypeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -517,7 +361,7 @@
             this.amount_pandingTextBox.Name = "amount_pandingTextBox";
             this.amount_pandingTextBox.Size = new System.Drawing.Size(151, 23);
             this.amount_pandingTextBox.TabIndex = 12;
-            this.amount_pandingTextBox.Validated += new System.EventHandler(this.amount_pandingTextBox_Validated);
+            this.amount_pandingTextBox.TextChanged += new System.EventHandler(this.amount_pandingTextBox_Validated);
             // 
             // voucher_amountTextBox
             // 
@@ -530,7 +374,7 @@
             this.voucher_amountTextBox.Name = "voucher_amountTextBox";
             this.voucher_amountTextBox.Size = new System.Drawing.Size(151, 23);
             this.voucher_amountTextBox.TabIndex = 10;
-            this.voucher_amountTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.voucher_amountTextBox_Validating);
+            this.voucher_amountTextBox.TextChanged += new System.EventHandler(this.voucher_amountTextBox_Validating);
             // 
             // voucher_dateDateTimePicker
             // 
@@ -560,7 +404,7 @@
             this.voucher_noTextBox.Name = "voucher_noTextBox";
             this.voucher_noTextBox.Size = new System.Drawing.Size(151, 23);
             this.voucher_noTextBox.TabIndex = 6;
-            this.voucher_noTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.voucher_noTextBox_Validating);
+            this.voucher_noTextBox.TextChanged += new System.EventHandler(this.voucher_noTextBox_Validating);
             // 
             // party_nameComboBox
             // 
@@ -577,7 +421,7 @@
             this.party_nameComboBox.Name = "party_nameComboBox";
             this.party_nameComboBox.Size = new System.Drawing.Size(151, 24);
             this.party_nameComboBox.TabIndex = 4;
-            this.party_nameComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.party_nameComboBox_Validating);
+            this.party_nameComboBox.TextChanged += new System.EventHandler(this.party_nameComboBox_Validating);
             // 
             // voucher_typeComboBox
             // 
@@ -597,7 +441,7 @@
             this.voucher_typeComboBox.Name = "voucher_typeComboBox";
             this.voucher_typeComboBox.Size = new System.Drawing.Size(151, 24);
             this.voucher_typeComboBox.TabIndex = 2;
-            this.voucher_typeComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.voucher_typeComboBox_Validating);
+            this.voucher_typeComboBox.SelectedIndexChanged += new System.EventHandler(this.voucher_typeComboBox_Validating);
             // 
             // scanButton
             // 
@@ -805,13 +649,9 @@
             this.Text = "VoucherForm";
             this.Load += new System.EventHandler(this.VoucherForm_Load);
             this.vouchergridPanel.ResumeLayout(false);
-            this.vouchergridPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.voucherBindingNavigator)).EndInit();
-            this.voucherBindingNavigator.ResumeLayout(false);
-            this.voucherBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.voucherDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.voucher1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bARMANSTOREDATABASEDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.voucherDataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.mainPanel.ResumeLayout(false);
@@ -861,29 +701,14 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button addPartyNameButton;
-        private System.Windows.Forms.BindingNavigator voucherBindingNavigator;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton voucherBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView voucherDataGridView;
         private System.Windows.Forms.BindingSource voucher1BindingSource;
         private BARMANSTOREDATABASEDataSetTableAdapters.voucher1TableAdapter voucher1TableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn voucheridDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn partynameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn vouchernoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn voucherdateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn voucheramountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn amountpandingDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewImageColumn imageDataGridViewImageColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn vouchertypeDataGridViewTextBoxColumn;
     }
 }

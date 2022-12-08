@@ -1037,26 +1037,10 @@ namespace BarmanStoreProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public transactionRow AddtransactionRow(
-                        string trans_Id, 
-                        decimal trans_amount, 
-                        string trans_type, 
-                        string trans_billno, 
-                        System.DateTime trans_date, 
-                        string party_name, 
-                        string trans_mode, 
-                        string chq_party, 
-                        string chq_bank, 
-                        string chq_no, 
-                        decimal chq_amount, 
-                        System.DateTime chq_date, 
-                        string upi_id, 
-                        string upi_phoneno, 
-                        string upi_trno, 
-                        decimal upi_amount) {
+            public transactionRow AddtransactionRow(decimal trans_amount, string trans_type, string trans_billno, System.DateTime trans_date, string party_name, string trans_mode, string chq_party, string chq_bank, string chq_no, decimal chq_amount, System.DateTime chq_date, string upi_id, string upi_phoneno, string upi_trno, decimal upi_amount) {
                 transactionRow rowtransactionRow = ((transactionRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        trans_Id,
+                        null,
                         trans_amount,
                         trans_type,
                         trans_billno,
@@ -1079,7 +1063,7 @@ namespace BarmanStoreProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public transactionRow FindBytrans_Id(string trans_Id) {
+            public transactionRow FindBytrans_Id(int trans_Id) {
                 return ((transactionRow)(this.Rows.Find(new object[] {
                             trans_Id})));
             }
@@ -1122,7 +1106,7 @@ namespace BarmanStoreProject {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columntrans_Id = new global::System.Data.DataColumn("trans_Id", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columntrans_Id = new global::System.Data.DataColumn("trans_Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntrans_Id);
                 this.columntrans_amount = new global::System.Data.DataColumn("trans_amount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntrans_amount);
@@ -1156,9 +1140,10 @@ namespace BarmanStoreProject {
                 base.Columns.Add(this.columnupi_amount);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columntrans_Id}, true));
+                this.columntrans_Id.AutoIncrement = true;
+                this.columntrans_Id.AutoIncrementSeed = 1;
                 this.columntrans_Id.AllowDBNull = false;
                 this.columntrans_Id.Unique = true;
-                this.columntrans_Id.MaxLength = 20;
                 this.columntrans_amount.AllowDBNull = false;
                 this.columntrans_type.AllowDBNull = false;
                 this.columntrans_type.MaxLength = 10;
@@ -2377,9 +2362,9 @@ namespace BarmanStoreProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string trans_Id {
+            public int trans_Id {
                 get {
-                    return ((string)(this[this.tabletransaction.trans_IdColumn]));
+                    return ((int)(this[this.tabletransaction.trans_IdColumn]));
                 }
                 set {
                     this[this.tabletransaction.trans_IdColumn] = value;
@@ -4502,9 +4487,9 @@ SELECT trans_Id, trans_amount, trans_type, trans_billno, trans_date, party_name,
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT trans_Id, trans_amount, trans_type, trans_billno, trans_date, party_name, " +
-                "trans_mode, chq_party, chq_bank, chq_no, chq_amount, chq_date, upi_id, upi_phone" +
-                "no, upi_trno, upi_amount FROM dbo.[transaction] where trans_billno=@trans_billno" +
+            this._commandCollection[1].CommandText = "SELECT chq_amount, chq_bank, chq_date, chq_no, chq_party, party_name, trans_Id, t" +
+                "rans_amount, trans_billno, trans_date, trans_mode, trans_type, upi_amount, upi_i" +
+                "d, upi_phoneno, upi_trno FROM [transaction] WHERE (trans_billno = @trans_billno)" +
                 "";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@trans_billno", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "trans_billno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5347,7 +5332,7 @@ SELECT voucher_id, party_name, voucher_no, voucher_date, voucher_amount, amount_
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT voucher_id, party_name, voucher_no, voucher_date, voucher_amount, amount_p" +
@@ -5365,6 +5350,13 @@ SELECT voucher_id, party_name, voucher_no, voucher_date, voucher_amount, amount_
                 "anding, image, voucher_type FROM dbo.voucher1 where voucher_type=@voucher_type";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@voucher_type", global::System.Data.SqlDbType.NVarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "voucher_type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "UPDATE      voucher1\r\nSET                amount_panding = @amount_panding\r\nWHERE " +
+                "       (voucher_no = @voucher_no); \r\n";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@amount_panding", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "amount_panding", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@voucher_no", global::System.Data.SqlDbType.NVarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "voucher_no", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5744,6 +5736,41 @@ SELECT voucher_id, party_name, voucher_no, voucher_date, voucher_amount, amount_
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string party_name, string voucher_no, global::System.Nullable<global::System.DateTime> voucher_date, global::System.Nullable<decimal> voucher_amount, global::System.Nullable<decimal> amount_panding, byte[] image, string voucher_type, int Original_voucher_id, string Original_party_name, string Original_voucher_no, global::System.Nullable<global::System.DateTime> Original_voucher_date, global::System.Nullable<decimal> Original_voucher_amount, global::System.Nullable<decimal> Original_amount_panding, string Original_voucher_type) {
             return this.Update(party_name, voucher_no, voucher_date, voucher_amount, amount_panding, image, voucher_type, Original_voucher_id, Original_party_name, Original_voucher_no, Original_voucher_date, Original_voucher_amount, Original_amount_panding, Original_voucher_type, Original_voucher_id);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateAmountPendingQuery(global::System.Nullable<decimal> amount_panding, string voucher_no) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            if ((amount_panding.HasValue == true)) {
+                command.Parameters[0].Value = ((decimal)(amount_panding.Value));
+            }
+            else {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((voucher_no == null)) {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[1].Value = ((string)(voucher_no));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     

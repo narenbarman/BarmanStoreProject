@@ -334,6 +334,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SignUpForm";
             this.Text = "SIGN UP";
+            this.Load += new System.EventHandler(this.SignUpForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

@@ -15,7 +15,7 @@ namespace BarmanStoreProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new VoucherForm());
+            Application.Run(new MainForm());
         }
     }
 }
