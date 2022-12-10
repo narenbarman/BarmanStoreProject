@@ -185,6 +185,7 @@ namespace BarmanStoreProject
             this.transactionBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.bARMANSTOREDATABASEDataSet);
             MessageBox.Show("Transaction Recorded");
+            VoucherForm.RefreshVoucherForm();
             this.Close();
         }
     }

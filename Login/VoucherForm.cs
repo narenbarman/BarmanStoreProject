@@ -1,6 +1,7 @@
 ﻿using BarmanStoreProject.BARMANSTOREDATABASEDataSetTableAdapters;
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
@@ -9,37 +10,32 @@ namespace BarmanStoreProject
 {
     public partial class VoucherForm : Form
     {
+        private static VoucherForm voucherForm;
+
         public VoucherForm()
         {
+            voucherForm = this;
             InitializeComponent();
-            Party_nameComboLoad();
+            Party_nameComboLoad();         
         }
 
         private void VoucherForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'bARMANSTOREDATABASEDataSet.voucher1' table. You can move, or remove it, as needed.
-            this.voucher1TableAdapter.FillByVoucherType(this.bARMANSTOREDATABASEDataSet.voucher1, "payment");
-            voucher1TableAdapter.Dispose();
-            FormStatus();
+            this.RefreshMe();   
         }
 
-        private void voucherBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.voucher1BindingSource.EndEdit();
-            //this.voucher1TableAdapter.Update(this.bARMANSTOREDATABASEDataSet.voucher1);
-            this.tableAdapterManager.UpdateAll(this.bARMANSTOREDATABASEDataSet);
-        }
-
+        #region image function
         private void imagePictureBox_Click(object sender, EventArgs e)
         {
-            FormStatus();
+           System.Drawing.Image image=imagePictureBox.Image;
             OpenFileDialog OpenFileDialog1 = new OpenFileDialog();
             OpenFileDialog1.Filter = "Picture Files (*)|*.bmp;*.gif;*.jpeg;, *.jpg;,*.png;";
             if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 imagePictureBox.Image = System.Drawing.Image.FromFile(OpenFileDialog1.FileName);
             }
+            updateButton.Enabled = !(imagePictureBox.Image == image);
+            
         }
 
         private void scanButton_Click(object sender, EventArgs e)
@@ -50,28 +46,65 @@ namespace BarmanStoreProject
                 form.Show();
             }
         }
+        #endregion
 
         private void addButton_Click(object sender, EventArgs e)
         {
             this.voucher1BindingSource.AddNew();
             addButton.Enabled = false;
-            FormStatus();
+            voucher_noTextBox.Enabled = true;
+            deleteButton.Enabled = false;
+            this.voucherDataGridView.Enabled = false;
+            //FormStatus();
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.voucher1BindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.bARMANSTOREDATABASEDataSet);
-            FormStatus();
+            try
+            {
+                amount_pandingTextBox.Text=voucher_amountTextBox.Text;
+                this.Validate();
+                this.voucher1BindingSource.EndEdit();
+                this.tableAdapterManager.UpdateAll(this.bARMANSTOREDATABASEDataSet);
+                saveButton.Enabled=false;
+                addButton.Enabled = true;
+                voucherDataGridView.Enabled = true;
+                MessageBox.Show("Record saved successfully");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void modifyButton_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.voucher1BindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.bARMANSTOREDATABASEDataSet);
-            FormStatus();
+            try
+            {
+                BARMANSTOREDATABASEDataSet.transactionDataTable _transactions = new BARMANSTOREDATABASEDataSet.transactionDataTable();
+                BARMANSTOREDATABASEDataSetTableAdapters.transactionTableAdapter _transactionTableAdapter = new transactionTableAdapter();
+                _transactionTableAdapter.FillByBillNo(_transactions, voucher_noTextBox.Text);
+                decimal anount_pending = CurrencyToDec(voucher_amountTextBox.Text);
+                if (_transactions.Rows.Count>0)
+                {
+                    for (int i=0;i< _transactions.Rows.Count;i++)
+                    {
+                        anount_pending = anount_pending - (decimal)_transactions.Rows[i]["trans_amount"];
+                    }
+                }
+                amount_pandingTextBox.Text = anount_pending + "";
+                this.Validate();
+                this.voucher1BindingSource.EndEdit();
+                
+                modifyButton.Enabled = false;
+                addButton.Enabled = true;
+                voucherDataGridView.Enabled = true;
+                MessageBox.Show("Record Modified successfully");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -83,163 +116,28 @@ namespace BarmanStoreProject
             voucher_amountTextBox.Text = "0";
             amount_pandingTextBox.Text = "0";
             addPartyNameButton.Visible = false;
-            FormStatus();
         }
 
         private void addPartyNameButton_Click(object sender, EventArgs e)
         {
             BARMANSTOREDATABASEDataSetTableAdapters.partyTableAdapter partyTableAdapter = new partyTableAdapter();
-            partyTableAdapter.InsertPartyName(party_nameComboBox.Text);
-            //party_nameComboBox.Items.Add(party_nameComboBox.Text);
-            //party_nameComboBox.Text = party_nameComboBox.Text;
+            partyTableAdapter.InsertPartyName(party_nameComboBox.Text.ToUpper());
             addPartyNameButton.Visible = false;
             Party_nameComboLoad();
+            party_nameComboBox_Validated(sender,e);
 
         }
 
-        private void FormStatus()
+        private void deleteButton_Click(object sender, EventArgs e)
         {
-            if (addPartyNameButton.Visible == false)
-
+            try
             {
-                addButton.Enabled = true;
-                modifyButton.Enabled = true;
-                saveButton.Enabled = true;
-                deleteButton.Enabled = true;
-                BARMANSTOREDATABASEDataSet.voucher1DataTable _voucher1 = new BARMANSTOREDATABASEDataSet.voucher1DataTable();
-                BARMANSTOREDATABASEDataSetTableAdapters.voucher1TableAdapter _voucher1TableAdapter = new BARMANSTOREDATABASEDataSetTableAdapters.voucher1TableAdapter();
-                _voucher1TableAdapter.FillByVoucherNo(_voucher1, voucher_noTextBox.Text);
-                if ((_voucher1.Rows.Count > 0))
-                {
-                    _voucher1TableAdapter.Dispose();
-                    addButton.Enabled = true;
-                    modifyButton.Enabled = false;
-                    saveButton.Enabled = false;
-                    deleteButton.Enabled = true;
-                    if (!string.IsNullOrEmpty(voucher_typeComboBox.Text)
-                        && !string.IsNullOrEmpty(party_nameComboBox.Text)
-                        && !string.IsNullOrEmpty(voucher_noTextBox.Text)
-                        && !string.IsNullOrEmpty(voucher_dateDateTimePicker.Text)
-                        && !string.IsNullOrEmpty(voucher_amountTextBox.Text)
-                        && !string.IsNullOrEmpty(amount_pandingTextBox.Text)
-                        && CurrencyToDec(voucher_amountTextBox.Text) != 0
-                        && CurrencyToDec(amount_pandingTextBox.Text) <= CurrencyToDec(voucher_amountTextBox.Text)
-                        )
-                    {
-                        //BARMANSTOREDATABASEDataSet.voucher1DataTable myTable = new BARMANSTOREDATABASEDataSet.voucher1DataTable();
-                        _voucher1.Clear();
-                        _voucher1TableAdapter.FillByVoucherNo(_voucher1, voucher_noTextBox.Text);
-                        _voucher1TableAdapter.Dispose();
-                        string voucher_type_org = (string)_voucher1.Rows[0]["voucher_type"];
-                        string party_name_org = (string)_voucher1.Rows[0]["party_name"];
-                        string voucher_no_org = (string)_voucher1.Rows[0]["voucher_no"];
-                        DateTime voucher_date_org = (DateTime)_voucher1.Rows[0]["voucher_date"];
-                        Decimal voucher_amount_org = CurrencyToDec(_voucher1.Rows[0]["voucher_amount"] + "");
-                        Decimal amount_panding_org = CurrencyToDec(_voucher1.Rows[0]["amount_panding"] + "");
-                        System.Drawing.Image image_org = null;
-                        if (_voucher1.Rows[0]["image"] != DBNull.Value)
-                        {
-                            var ms = new MemoryStream((byte[])_voucher1.Rows[0]["image"]);
-                            image_org = System.Drawing.Image.FromStream(ms);
-                        }
-                        string voucher_type = (string)voucher_typeComboBox.Text;
-                        string party_name = (string)party_nameComboBox.Text;
-                        string voucher_no = (string)voucher_noTextBox.Text;
-                        DateTime voucher_date = voucher_dateDateTimePicker.Value;
-                        decimal voucher_amount = CurrencyToDec(voucher_amountTextBox.Text);
-                        decimal amount_panding = CurrencyToDec(amount_pandingTextBox.Text);
-                        System.Drawing.Image image = (System.Drawing.Image)imagePictureBox.Image;
-                        if (voucher_type == voucher_type_org
-                            && party_name == party_name_org
-                            && voucher_no == voucher_no_org
-                            && voucher_date == voucher_date_org
-                            && voucher_amount == voucher_amount_org
-                            && amount_panding == amount_panding_org
-                            )
-                        {
-                            modifyButton.Enabled = false;
-                        }
-                        else modifyButton.Enabled = true;
-                    }
-                }
-                else
-                {
-                    modifyButton.Enabled = false;
-                    saveButton.Enabled = true;
-                    deleteButton.Enabled = false;
-                    if (string.IsNullOrEmpty(voucher_typeComboBox.Text)
-                        || string.IsNullOrEmpty(party_nameComboBox.Text)
-                        || string.IsNullOrEmpty(voucher_noTextBox.Text)
-                        || string.IsNullOrEmpty(voucher_dateDateTimePicker.Text)
-                        || string.IsNullOrEmpty(voucher_amountTextBox.Text)
-                        || string.IsNullOrEmpty(amount_pandingTextBox.Text)
-                        || CurrencyToDec(voucher_amountTextBox.Text) == 0
-                        || CurrencyToDec(amount_pandingTextBox.Text) == 0
-                        || CurrencyToDec(amount_pandingTextBox.Text) > CurrencyToDec(voucher_amountTextBox.Text)
-                        )
-                    {
-                        saveButton.Enabled = false;
-                    }
-                }
+                voucher1BindingSource.RemoveCurrent();
             }
-            else
-            {
-                addButton.Enabled = false;
-                modifyButton.Enabled = false;
-                saveButton.Enabled = false;
-                deleteButton.Enabled = false;
+            catch(Exception ex)
+            { 
+                MessageBox.Show(ex.Message);
             }
-        }
-
-        private void voucher_typeComboBox_Validating(object sender, EventArgs e)
-        {
-            FormStatus();
-        }
-
-        private void voucher_noTextBox_Validating(object sender, EventArgs e)
-        {
-            FormStatus();
-        }
-
-        private void voucher_dateDateTimePicker_Validating(object sender, EventArgs e)
-        {
-            FormStatus();
-        }
-
-        
-        private void voucher_amountTextBox_Validating(object sender, EventArgs e)
-        {
-            BARMANSTOREDATABASEDataSet.voucher1DataTable _voucher1 = new BARMANSTOREDATABASEDataSet.voucher1DataTable();
-            BARMANSTOREDATABASEDataSetTableAdapters.voucher1TableAdapter _voucher1TableAdapter = new BARMANSTOREDATABASEDataSetTableAdapters.voucher1TableAdapter();
-            _voucher1TableAdapter.FillByVoucherNo(_voucher1, voucher_noTextBox.Text);
-            if (_voucher1.Rows.Count > 0)
-            {
-               if (CurrencyToDec(voucher_amountTextBox.Text) < CurrencyToDec(amount_pandingTextBox.Text))
-                {
-                   voucher_amountTextBox.Text = "";
-                 }
-            }
-            else
-            {
-                amount_pandingTextBox.Text = voucher_amountTextBox.Text;
-            }
-            _voucher1TableAdapter.Dispose();
-            FormStatus();
-        }
-
-        private void amount_pandingTextBox_Validated(object sender, EventArgs e)
-        {
-            FormStatus();
-        }
-
-        private void party_nameComboBox_Validating(object sender, EventArgs e)
-        {
-            addPartyNameButton.Visible = true;
-            foreach (string partyName in party_nameComboBox.Items)
-            {
-                if (party_nameComboBox.Text==partyName) addPartyNameButton.Visible=false;
-            }
-            FormStatus();
         }
 
         //
@@ -254,7 +152,6 @@ namespace BarmanStoreProject
         //returns decimal value
         internal static decimal CurrencyToDec(string cCurrency)
         {
-
             string str = cCurrency;
             decimal decval;
             bool convt = decimal.TryParse(str, NumberStyles.Currency,
@@ -288,22 +185,20 @@ namespace BarmanStoreProject
 
         }
 
-        private void deleteButton_Click(object sender, EventArgs e)
-        {
-            voucher1BindingSource.RemoveCurrent();
-        }
-
         private void voucherDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             paymentButton.Visible = false;
             try
             {
-               string voucher_no = ((string)voucherDataGridView.Rows[voucherDataGridView.CurrentRow.Index].Cells[1].Value);
-               transactionTableAdapter.FillByBillNo(bARMANSTOREDATABASEDataSet.transaction, voucher_no);
-                if ((decimal)voucherDataGridView.Rows[voucherDataGridView.CurrentRow.Index].Cells[4].Value > 0)
+                if (voucherDataGridView.CurrentRow !=null)
                 {
-                    paymentButton.Visible = true;
-                    transactionDataGridView.Visible = groupBox2.Visible = true;
+                    string voucher_no = ((string)voucherDataGridView.Rows[voucherDataGridView.CurrentRow.Index].Cells[1].Value);
+                    transactionTableAdapter.FillByBillNo(bARMANSTOREDATABASEDataSet.transaction, voucher_no);
+                    if ((decimal)voucherDataGridView.Rows[voucherDataGridView.CurrentRow.Index].Cells[4].Value > 0)
+                    {
+                        paymentButton.Visible = true;
+                        transactionDataGridView.Visible = groupBox2.Visible = true;
+                    }
                 }
             }
             catch {
@@ -311,6 +206,120 @@ namespace BarmanStoreProject
 
             }
 
+        }
+
+        private void ValidateMe(object sender, EventArgs e)
+        {
+            saveButton.Enabled = false;
+            modifyButton.Enabled= false;
+            if (!addPartyNameButton.Visible)
+            { 
+               if (!string.IsNullOrEmpty(voucher_typeComboBox.Text)
+                  && !string.IsNullOrEmpty(party_nameComboBox.Text)
+                  && !string.IsNullOrEmpty(voucher_noTextBox.Text)
+                  && !string.IsNullOrEmpty(voucher_dateDateTimePicker.Text)
+                  && !string.IsNullOrEmpty(voucher_amountTextBox.Text)
+                  && !string.IsNullOrEmpty(amount_pandingTextBox.Text)
+                  && CurrencyToDec(voucher_amountTextBox.Text) >= 0
+                  && CurrencyToDec(amount_pandingTextBox.Text) <= CurrencyToDec(voucher_amountTextBox.Text)
+                  )
+                {
+                    BARMANSTOREDATABASEDataSet.voucher1DataTable _vouchers =new BARMANSTOREDATABASEDataSet.voucher1DataTable();
+                    BARMANSTOREDATABASEDataSetTableAdapters.voucher1TableAdapter _voucher1TableAdapter = new BARMANSTOREDATABASEDataSetTableAdapters.voucher1TableAdapter();
+                    _voucher1TableAdapter.FillByVoucherNo(_vouchers, voucher_noTextBox.Text);
+                    if (_vouchers.Rows.Count>0)
+                    {
+                        deleteButton.Enabled = true;
+                        addButton.Enabled = true;
+                        voucher_noTextBox.Enabled = false;
+                        string voucher_type_org = ((string)_vouchers.Rows[0]["voucher_type"]).ToUpper();
+                        string party_name_org = ((string)_vouchers.Rows[0]["party_name"]).ToUpper();
+                        string voucher_no_org = ((string)_vouchers.Rows[0]["voucher_no"]).ToUpper();
+                        DateTime voucher_date_org = (DateTime)_vouchers.Rows[0]["voucher_date"];
+                        Decimal voucher_amount_org = (decimal)_vouchers.Rows[0]["voucher_amount"];
+                        Decimal amount_panding_org = (decimal)_vouchers.Rows[0]["amount_panding"];
+
+                        string voucher_type = (string)voucher_typeComboBox.Text.ToUpper();
+                        string party_name = (string)party_nameComboBox.Text.ToUpper();
+                        string voucher_no = (string)voucher_noTextBox.Text.ToUpper();
+                        DateTime voucher_date = voucher_dateDateTimePicker.Value;
+                        decimal voucher_amount = CurrencyToDec(voucher_amountTextBox.Text);
+                        decimal amount_panding = CurrencyToDec(amount_pandingTextBox.Text);
+                        if (voucher_type == voucher_type_org
+                                && party_name == party_name_org
+                                && voucher_no == voucher_no_org
+                                && voucher_date == voucher_date_org
+                                && voucher_amount == voucher_amount_org
+                                && amount_panding == amount_panding_org
+                                )
+                        {
+                            modifyButton.Enabled = false;
+                        }
+                        else
+                        {
+                            modifyButton.Enabled = true;
+                        }
+                    }
+                    else
+                    {
+                        deleteButton.Enabled = false;
+                        addButton.Enabled= false;
+                        voucher_noTextBox.Enabled= true;
+                        saveButton.Enabled= !(_vouchers.Rows.Count > 0);
+                    }
+                }
+               else
+                {
+                    saveButton.Enabled = false;
+                    modifyButton.Enabled = false;
+                }    
+                
+            }
+        }
+
+        private void party_nameComboBox_Validated(object sender, EventArgs e)
+        {
+            BARMANSTOREDATABASEDataSet.partyDataTable parties=new BARMANSTOREDATABASEDataSet.partyDataTable();
+            BARMANSTOREDATABASEDataSetTableAdapters.partyTableAdapter partyTableAdapter = new BARMANSTOREDATABASEDataSetTableAdapters.partyTableAdapter();
+            partyTableAdapter.FillByPartyName(parties,party_nameComboBox.Text);
+            addPartyNameButton.Visible = !(parties.Rows.Count>0);
+            addButton.Visible=saveButton.Visible=modifyButton.Visible=clearButton.Visible=deleteButton.Visible= (parties.Rows.Count > 0);
+            ValidateMe(sender, e);
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.RefreshMe();
+        }
+
+        internal static void RefreshVoucherForm()
+        {
+            voucherForm.RefreshMe();
+        }
+
+        private void RefreshMe()
+        {
+            // TODO: This line of code loads data into the 'bARMANSTOREDATABASEDataSet.voucher1' table. You can move, or remove it, as needed.
+            this.voucher1TableAdapter.FillByVoucherType(this.bARMANSTOREDATABASEDataSet.voucher1, "payment");
+            voucherDataGridView.Rows[0].Selected= true;
+            voucher1TableAdapter.Dispose();
+            addButton.Enabled = true;
+            voucherDataGridView.Enabled = true;
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Validate();
+                this.voucher1BindingSource.EndEdit();
+                this.tableAdapterManager.UpdateAll(this.bARMANSTOREDATABASEDataSet);
+                updateButton.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

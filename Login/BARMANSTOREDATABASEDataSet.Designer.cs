@@ -5976,7 +5976,7 @@ SELECT party_name, distributor_name, company_name, visiting_day, delivery_day, s
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT party_name, distributor_name, company_name, visiting_day, delivery_day, sa" +
@@ -5984,9 +5984,14 @@ SELECT party_name, distributor_name, company_name, visiting_day, delivery_day, s
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "INSERT INTO [dbo].[party] ([party_name]) VALUES (@party_name);\r\n";
+            this._commandCollection[1].CommandText = "SELECT       *\r\nFROM            party\r\nWHERE        (party_name = @party_name)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@party_name", global::System.Data.SqlDbType.NVarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "party_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "INSERT INTO [dbo].[party] ([party_name]) VALUES (@party_name);\r\n";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@party_name", global::System.Data.SqlDbType.NVarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "party_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6008,6 +6013,42 @@ SELECT party_name, distributor_name, company_name, visiting_day, delivery_day, s
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual BARMANSTOREDATABASEDataSet.partyDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            BARMANSTOREDATABASEDataSet.partyDataTable dataTable = new BARMANSTOREDATABASEDataSet.partyDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByPartyName(BARMANSTOREDATABASEDataSet.partyDataTable dataTable, string party_name) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((party_name == null)) {
+                throw new global::System.ArgumentNullException("party_name");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(party_name));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual BARMANSTOREDATABASEDataSet.partyDataTable GetDataByPartyName(string party_name) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((party_name == null)) {
+                throw new global::System.ArgumentNullException("party_name");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(party_name));
+            }
             BARMANSTOREDATABASEDataSet.partyDataTable dataTable = new BARMANSTOREDATABASEDataSet.partyDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -6354,7 +6395,7 @@ SELECT party_name, distributor_name, company_name, visiting_day, delivery_day, s
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertPartyName(string party_name) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
             if ((party_name == null)) {
                 throw new global::System.ArgumentNullException("party_name");
             }

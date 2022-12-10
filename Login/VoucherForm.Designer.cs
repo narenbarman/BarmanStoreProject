@@ -46,6 +46,7 @@
             this.voucher1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bARMANSTOREDATABASEDataSet = new BarmanStoreProject.BARMANSTOREDATABASEDataSet();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.addPartyNameButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
@@ -72,6 +73,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.paymentButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.updateButton = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.tableAdapterManager = new BarmanStoreProject.BARMANSTOREDATABASEDataSetTableAdapters.TableAdapterManager();
             this.transactionTableAdapter = new BarmanStoreProject.BARMANSTOREDATABASEDataSetTableAdapters.transactionTableAdapter();
@@ -251,6 +253,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cancelButton);
             this.groupBox1.Controls.Add(this.addPartyNameButton);
             this.groupBox1.Controls.Add(this.deleteButton);
             this.groupBox1.Controls.Add(this.clearButton);
@@ -277,6 +280,18 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
+            // cancelButton
+            // 
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.Location = new System.Drawing.Point(410, 208);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(95, 30);
+            this.cancelButton.TabIndex = 19;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
             // addPartyNameButton
             // 
             this.addPartyNameButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -294,7 +309,7 @@
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteButton.Location = new System.Drawing.Point(410, 205);
+            this.deleteButton.Location = new System.Drawing.Point(410, 128);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(95, 30);
             this.deleteButton.TabIndex = 17;
@@ -306,7 +321,7 @@
             // 
             this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearButton.Location = new System.Drawing.Point(410, 154);
+            this.clearButton.Location = new System.Drawing.Point(410, 168);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(95, 30);
             this.clearButton.TabIndex = 16;
@@ -318,7 +333,7 @@
             // 
             this.modifyButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.modifyButton.Location = new System.Drawing.Point(410, 112);
+            this.modifyButton.Location = new System.Drawing.Point(410, 90);
             this.modifyButton.Name = "modifyButton";
             this.modifyButton.Size = new System.Drawing.Size(95, 30);
             this.modifyButton.TabIndex = 15;
@@ -330,7 +345,7 @@
             // 
             this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveButton.Location = new System.Drawing.Point(410, 67);
+            this.saveButton.Location = new System.Drawing.Point(410, 51);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(95, 30);
             this.saveButton.TabIndex = 14;
@@ -342,7 +357,8 @@
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.Location = new System.Drawing.Point(410, 19);
+            this.addButton.Enabled = false;
+            this.addButton.Location = new System.Drawing.Point(410, 13);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(95, 30);
             this.addButton.TabIndex = 13;
@@ -361,7 +377,7 @@
             this.amount_pandingTextBox.Name = "amount_pandingTextBox";
             this.amount_pandingTextBox.Size = new System.Drawing.Size(151, 23);
             this.amount_pandingTextBox.TabIndex = 12;
-            this.amount_pandingTextBox.TextChanged += new System.EventHandler(this.amount_pandingTextBox_Validated);
+            this.amount_pandingTextBox.TextChanged += new System.EventHandler(this.ValidateMe);
             // 
             // voucher_amountTextBox
             // 
@@ -374,7 +390,7 @@
             this.voucher_amountTextBox.Name = "voucher_amountTextBox";
             this.voucher_amountTextBox.Size = new System.Drawing.Size(151, 23);
             this.voucher_amountTextBox.TabIndex = 10;
-            this.voucher_amountTextBox.TextChanged += new System.EventHandler(this.voucher_amountTextBox_Validating);
+            this.voucher_amountTextBox.TextChanged += new System.EventHandler(this.ValidateMe);
             // 
             // voucher_dateDateTimePicker
             // 
@@ -392,7 +408,7 @@
             this.voucher_dateDateTimePicker.Size = new System.Drawing.Size(151, 23);
             this.voucher_dateDateTimePicker.TabIndex = 8;
             this.voucher_dateDateTimePicker.Value = new System.DateTime(2022, 11, 23, 0, 0, 0, 0);
-            this.voucher_dateDateTimePicker.Validating += new System.ComponentModel.CancelEventHandler(this.voucher_dateDateTimePicker_Validating);
+            this.voucher_dateDateTimePicker.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateMe);
             // 
             // voucher_noTextBox
             // 
@@ -404,7 +420,7 @@
             this.voucher_noTextBox.Name = "voucher_noTextBox";
             this.voucher_noTextBox.Size = new System.Drawing.Size(151, 23);
             this.voucher_noTextBox.TabIndex = 6;
-            this.voucher_noTextBox.TextChanged += new System.EventHandler(this.voucher_noTextBox_Validating);
+            this.voucher_noTextBox.TextChanged += new System.EventHandler(this.ValidateMe);
             // 
             // party_nameComboBox
             // 
@@ -412,6 +428,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.party_nameComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.party_nameComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.party_nameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.voucher1BindingSource, "party_name", true));
             this.party_nameComboBox.FormattingEnabled = true;
             this.party_nameComboBox.Items.AddRange(new object[] {
@@ -421,7 +438,8 @@
             this.party_nameComboBox.Name = "party_nameComboBox";
             this.party_nameComboBox.Size = new System.Drawing.Size(151, 24);
             this.party_nameComboBox.TabIndex = 4;
-            this.party_nameComboBox.TextChanged += new System.EventHandler(this.party_nameComboBox_Validating);
+            this.party_nameComboBox.TextChanged += new System.EventHandler(this.ValidateMe);
+            this.party_nameComboBox.Validated += new System.EventHandler(this.party_nameComboBox_Validated);
             // 
             // voucher_typeComboBox
             // 
@@ -441,13 +459,13 @@
             this.voucher_typeComboBox.Name = "voucher_typeComboBox";
             this.voucher_typeComboBox.Size = new System.Drawing.Size(151, 24);
             this.voucher_typeComboBox.TabIndex = 2;
-            this.voucher_typeComboBox.SelectedIndexChanged += new System.EventHandler(this.voucher_typeComboBox_Validating);
+            this.voucher_typeComboBox.SelectedIndexChanged += new System.EventHandler(this.ValidateMe);
             // 
             // scanButton
             // 
             this.scanButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.scanButton.Location = new System.Drawing.Point(164, 0);
+            this.scanButton.Location = new System.Drawing.Point(79, 0);
             this.scanButton.Name = "scanButton";
             this.scanButton.Size = new System.Drawing.Size(88, 27);
             this.scanButton.TabIndex = 0;
@@ -600,6 +618,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.updateButton);
             this.groupBox3.Controls.Add(this.button7);
             this.groupBox3.Controls.Add(this.scanButton);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -610,11 +629,24 @@
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             // 
+            // updateButton
+            // 
+            this.updateButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateButton.Enabled = false;
+            this.updateButton.Location = new System.Drawing.Point(263, 0);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(88, 27);
+            this.updateButton.TabIndex = 2;
+            this.updateButton.Text = "Update";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
             // button7
             // 
             this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.Location = new System.Drawing.Point(254, 0);
+            this.button7.Location = new System.Drawing.Point(169, 0);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(88, 27);
             this.button7.TabIndex = 1;
@@ -710,5 +742,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn voucheramountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn amountpandingDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn vouchertypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button updateButton;
     }
 }
