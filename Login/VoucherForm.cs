@@ -133,6 +133,8 @@ namespace BarmanStoreProject
             try
             {
                 voucher1BindingSource.RemoveCurrent();
+                this.Validate();
+                this.voucher1BindingSource.EndEdit();
             }
             catch(Exception ex)
             { 
@@ -245,6 +247,13 @@ namespace BarmanStoreProject
                         DateTime voucher_date = voucher_dateDateTimePicker.Value;
                         decimal voucher_amount = CurrencyToDec(voucher_amountTextBox.Text);
                         decimal amount_panding = CurrencyToDec(amount_pandingTextBox.Text);
+                      /*  MessageBox.Show(voucher_type + "==" + voucher_type_org + "==" + (voucher_type == voucher_type_org)
+                                + Environment.NewLine + party_name + "==" + party_name_org + "==" + (party_name == party_name_org)
+                                + Environment.NewLine + voucher_no + "==" + voucher_no_org + "==" + (voucher_no == voucher_no_org)
+                                + Environment.NewLine + voucher_date + "==" + voucher_date_org + "==" + (voucher_date == voucher_date_org)
+                                + Environment.NewLine + voucher_amount + "==" + voucher_amount_org + "==" + (voucher_amount == voucher_amount_org)
+                                + Environment.NewLine + amount_panding + "==" + amount_panding_org + "==" + (amount_panding == amount_panding_org)
+                                );*/
                         if (voucher_type == voucher_type_org
                                 && party_name == party_name_org
                                 && voucher_no == voucher_no_org

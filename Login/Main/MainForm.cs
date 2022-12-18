@@ -155,8 +155,15 @@ namespace BarmanStoreProject
         {
             Views.OpenMdiForm(new VoucherForm());
         }
+
+        private void partiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Views.OpenMdiForm(new PartiesForm());
+        }
     }
-    }
+
+    
+}
 
 
 

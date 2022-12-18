@@ -91,6 +91,12 @@
     <Compile Include="Distributors\Distributors.Designer.cs">
       <DependentUpon>Distributors.cs</DependentUpon>
     </Compile>
+    <Compile Include="PartiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PartiesForm.Designer.cs">
+      <DependentUpon>PartiesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScannerForm1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +170,9 @@
     </Compile>
     <EmbeddedResource Include="Distributors\Distributors.resx">
       <DependentUpon>Distributors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartiesForm.resx">
+      <DependentUpon>PartiesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScannerForm1.resx">
       <DependentUpon>ScannerForm1.cs</DependentUpon>

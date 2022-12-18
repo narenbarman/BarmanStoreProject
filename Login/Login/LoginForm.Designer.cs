@@ -90,6 +90,7 @@
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(207, 26);
             this.passwordTextBox.TabIndex = 6;
+            this.passwordTextBox.Text = "Naren@123";
             // 
             // usernameTextBox
             // 
@@ -97,6 +98,7 @@
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(207, 26);
             this.usernameTextBox.TabIndex = 5;
+            this.usernameTextBox.Text = "naren";
             // 
             // signUpLinkLabel
             // 
